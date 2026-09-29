@@ -32,6 +32,8 @@
   --chart-5: oklch(0.269 0 0);
   --radius: 0.625rem;
   --surface-warm: oklch(0.965 0.007 90);
+  /* uselayouts dark band (#1B1C1D). */
+  --surface-night: oklch(0.22 0.003 286);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -48,6 +50,7 @@
   --font-mono: "Geist Mono Variable", ui-monospace, monospace;
   /* Section surfaces from the uselayouts landing page. */
   --color-surface-warm: var(--surface-warm);
+  --color-surface-night: var(--surface-night);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -134,28 +137,86 @@
   }
 }
 
-/* Single-page bands: each top-level section is full-bleed; padding centres one start-aligned container. */
-@layer components {
-  .page > section,
+/*
+ * Single-page bands. Unlayered on purpose: these rules must win over the typography plugin.
+ * Each top-level section is a full-bleed band; inside it, a side-heading grid:
+ * the H2 sits in a left column, content in the right, tables span both.
+ */
+.page > section,
+.page > .footnotes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  row-gap: 1.25rem;
+  padding-inline: max(1.5rem, calc((100% - var(--container-6xl)) / 2));
+  @apply scroll-mt-28 py-16 lg:py-20;
+}
+@variant lg {
+  .page > section:has(> h2),
   .page > .footnotes {
-    padding-inline: max(1.5rem, calc((100% - var(--container-6xl)) / 2));
-    @apply scroll-mt-16 py-16 lg:py-24;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
+    column-gap: 4rem;
   }
-  .page > section[data-tone="warm"],
-  .page > .footnotes {
-    @apply bg-surface-warm;
+  .page > section > h2,
+  .page > .footnotes > h2 {
+    grid-column: 1;
   }
-  .page > section.dark {
-    @apply bg-background text-foreground;
+  .page > section:has(> h2) > :not(h2),
+  .page > .footnotes > :not(h2) {
+    grid-column: 2;
   }
-  /* Let long cells in Markdown tables wrap instead of clipping. */
-  .page td,
-  .page th {
-    white-space: normal;
+  /* Component blocks (tables, card and item grids, accordions) use the full width. */
+  .page > section:has(> h2) > div {
+    grid-column: 1 / -1;
   }
 }
-
-/* Unlayered so it wins over the typography plugin: buttons keep their own look. */
+/* One rhythm: the grid gap spaces siblings, so their own margins go. */
+.page > section > *,
+.page > .footnotes > * {
+  margin-block: 0;
+}
+.page > section[data-tone="warm"],
+.page > .footnotes {
+  @apply bg-surface-warm;
+}
+/* Sources continue the method band instead of opening a new one. */
+.page > .footnotes {
+  @apply pt-0;
+}
+.page > section.dark {
+  @apply bg-surface-night text-foreground;
+}
+/* Let long cells in Markdown tables wrap; show a scroll cue when a table is wider than the screen. */
+.page td,
+.page th {
+  white-space: normal;
+}
+.page [data-slot="table-container"] {
+  background:
+    linear-gradient(to right, var(--surface-bg, var(--background)) 30%, transparent) left / 2rem
+      100% no-repeat local,
+    linear-gradient(to left, var(--surface-bg, var(--background)) 30%, transparent) right / 2rem
+      100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, oklch(0 0 0 / 0.14), transparent) left / 0.75rem 100%
+      no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, oklch(0 0 0 / 0.14), transparent) right / 0.75rem
+      100% no-repeat scroll;
+}
+.page > section[data-tone="warm"],
+.page > .footnotes {
+  --surface-bg: var(--surface-warm);
+}
+.page > section.dark {
+  --surface-bg: var(--surface-night);
+}
+/* Typography styles links; buttons keep their own look. */
 .page [data-slot="button"] {
   text-decoration: none;
+}
+/* Footnote back-links are navigation, not content: keep them quiet. */
+.page [data-footnote-backref] {
+  @apply text-muted-foreground no-underline;
+}
+::selection {
+  @apply bg-foreground text-background;
 }

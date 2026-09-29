@@ -58,7 +58,12 @@ export default defineConfig({
       enforce: "pre",
       ...mdx({
         remarkPlugins: [remarkGfm],
-        remarkRehypeOptions: { footnoteLabel: "Sources", footnoteLabelTagName: "h2" },
+        remarkRehypeOptions: {
+          footnoteLabel: "Sources",
+          footnoteLabelTagName: "h2",
+          // Show the label: the default hides it with sr-only.
+          footnoteLabelProperties: {},
+        },
       }),
     },
     vinext({
