@@ -1,0 +1,207 @@
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+
+<section id="summary">
+
+<Badge variant="outline">Last reviewed 29 September 2026 · v0.1 draft</Badge>
+
+# What can the public verify about ECINet?
+
+ECINet is the Election Commission of India's single platform for electoral services and for the work of election officials. The Commission has described how the platform is organised and who can do what on it. As of the date above, we could not find any published source code, architecture document, role-permission matrix, audit report, release history or build verification for ECINet. The public therefore cannot yet check the Commission's statements independently.
+
+This page sets out what is public, what is only stated, and what is missing. It compares this with what other election systems publish, and it makes a specific, limited request for disclosure.
+
+<Button nativeButton={false} render={<a href="#request" />}>
+  Read the request
+</Button>
+
+</section>
+
+<section id="ecinet" data-tone="warm">
+
+## What ECINet is
+
+Every statement on this page carries one of four labels: <Badge>Fact</Badge> <Badge variant="secondary">Official claim</Badge> <Badge variant="outline">Analysis</Badge> <Badge variant="ghost">Open question</Badge>
+
+<Badge>Fact</Badge> In May 2025 the Commission announced ECINet as a single platform that would
+"integrate and reorient over 40" of its existing mobile and web applications, for electors, election
+officials, political parties and civil society.[^pib-2025-05]
+
+<Badge>Fact</Badge> The Commission launched ECINet at the India International Conference on
+Democracy and Election Management (IICDEM) 2026, held from 21 to 23 January 2026 in New
+Delhi.[^pib-2026-01]
+
+<Badge>Fact</Badge> During the Special Intensive Revision of electoral rolls, the Commission
+directed Booth Level Officers to collect documents from electors and "upload them on the ECINet, for
+decision by the ERO" (the Electoral Registration Officer).[^pib-2026-09-26] ECINet is therefore part
+of how decisions on electoral rolls are recorded.
+
+<Badge variant="secondary">Official claim</Badge> On 26 September 2026 the Commission stated:
+
+> Field officers have role-based access to the ECINET system as per their statutory powers.[^pib-2026-09-26]
+
+<Badge variant="secondary">Official claim</Badge> Two days earlier, news agencies quoted unnamed
+Commission officials as saying that ECINet is "decentralised" and that statutory functions can be
+performed only by the designated election officials, not by anyone at the Commission's
+headquarters.[^pti-2026-09-24] This was reported by the press and is not a signed Commission
+document.
+
+<Badge>Fact</Badge> In the same 26 September 2026 statement, the Commission said that a committee
+headed by a Senior Deputy Election Commissioner, including an independent expert from an IIT or
+IIIT, "will review the ECINET to double-check that it complies with the provisions of the Acts and
+Rules and submit report to the Commission".[^pib-2026-09-26]
+
+</section>
+
+<section id="ledger">
+
+## Transparency ledger
+
+For each artefact, the ledger records what we found in public sources, checked on 29 September 2026. <Badge variant="outline">None found</Badge> means we searched and found nothing public. It does not mean the artefact does not exist. If you know of a public source, please open an issue.
+
+| Artefact                      | Status                                       | What is public                                                               | What is missing                                                                   |
+| ----------------------------- | -------------------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Source code                   | <Badge variant="outline">None found</Badge>  | Nothing found                                                                | Any published repository, or access for independent reviewers                     |
+| Architecture                  | <Badge variant="secondary">Claimed</Badge>   | Descriptions of the platform as "decentralised"[^pti-2026-09-24]             | A component and data-flow description                                             |
+| Role permissions (RBAC)       | <Badge variant="secondary">Claimed</Badge>   | "Role-based access … as per their statutory powers"[^pib-2026-09-26]         | A matrix of roles against actions, including administrator and headquarters roles |
+| Audit scope and reports       | <Badge variant="secondary">Announced</Badge> | A review committee has been announced[^pib-2026-09-26]                       | Terms of reference, membership, method, and a published report                    |
+| Release history               | <Badge variant="secondary">Claimed</Badge>   | "Various upgradations of the portal have already been made"[^pib-2026-09-26] | A dated changelog of changes that affect roles or electoral-roll decisions        |
+| Production version and hashes | <Badge variant="outline">None found</Badge>  | Nothing found                                                                | A way to confirm which version is running                                         |
+| Public security testing       | <Badge variant="outline">None found</Badge>  | Nothing found                                                                | A bug bounty, a public test, or a vulnerability disclosure policy                 |
+
+</section>
+
+<section id="review" className="dark prose-invert">
+
+## Institutional review is not public scrutiny
+
+<Badge variant="outline">Analysis</Badge> A review that includes an expert from an IIT or IIIT can
+be valuable. Such experts can examine systems in depth, often under confidentiality, and can raise
+problems internally before they cause harm. The review the Commission has announced is a real step.
+
+<Badge variant="outline">Analysis</Badge> However, it answers a different question from public
+scrutiny. The difference matters most when public trust itself is in question.
+
+|                            | Institutional review                   | Public scrutiny                 |
+| -------------------------- | -------------------------------------- | ------------------------------- |
+| Who can look               | Appointed reviewers                    | Anyone with the skills and time |
+| What they see              | What they are given access to          | What is published               |
+| Findings                   | Reported to the Commission             | Visible to everyone             |
+| Can others reproduce them? | Only other appointed reviewers         | Yes                             |
+| After each new release     | Only if another review is commissioned | Continuous                      |
+
+<Badge variant="ghost">Open question</Badge> Will the committee's terms of reference, its members'
+affiliations, and its report be published?
+
+</section>
+
+<section id="compare" data-tone="warm">
+
+## What other election systems publish
+
+The table below describes what each system publishes. It is not a ranking. The systems differ in kind: some are internet voting, some are voting machines, and one is a toolkit. None of them is the same kind of system as ECINet. We include them because they show that publishing source code, specifications, test reports and build verification is established practice in election technology.
+
+|                                       | Source code                                                                          | Examination or test reports                                                               | Public testing                                                                 | Deployed = published                                                       | Status                        |
+| ------------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------- | ----------------------------- |
+| **Switzerland**, Swiss Post e-voting  | <Badge variant="secondary">Public</Badge> required by law[^ch-bk]                    | <Badge variant="secondary">Public</Badge> since 2022[^ch-bk]                              | Permanent bug bounty required; public intrusion test in 2019[^ch-bk][^ch-post] | Law requires evidence that executables match the published source[^ch-oev] | In use in cantonal trials     |
+| **Estonia**, IVXV internet voting     | <Badge variant="secondary">Public</Badge>[^ee-docs][^ee-repo]                        | Pending check                                                                             | None found                                                                     | Repository states it holds "the code that is used for election"[^ee-repo]  | In use                        |
+| **Brazil**, electronic voting machine | <Badge variant="outline">Restricted</Badge> to accredited oversight bodies[^br-2026] | Pending check                                                                             | Public Security Test held before elections[^br-tps]                            | Hashes published; signing and sealing ceremony[^br-hash]                   | In use                        |
+| **USA**, VotingWorks VxSuite          | <Badge variant="secondary">Public</Badge> (GPL-3.0)[^us-vx]                          | <Badge variant="secondary">Public</Badge> federal test report and certificate[^us-eac-vx] | None found                                                                     | Record of trusted build and hashes published[^us-eac-vx]                   | Certified 15 September 2026   |
+| **ElectionGuard**, toolkit            | <Badge variant="secondary">Public</Badge>[^eg-spec]                                  | Not applicable                                                                            | Not applicable                                                                 | Not applicable                                                             | Specification v2.1            |
+| **Norway**, internet-voting trials    | <Badge variant="secondary">Published</Badge> in 2011[^no-nik]                        | Source-code audit report[^no-audit]                                                       | None found                                                                     | Pending check                                                              | Trials ended in 2014[^no-end] |
+
+<Badge variant="outline">Analysis</Badge> Two points apply to ECINet directly. First, publishing
+source code did not stop Norway or Switzerland from finding problems; it is how the problems were
+found.[^no-nik][^ch-post] Second, Brazil shows a middle path in which code is shown to accredited
+bodies and hashes are published for everyone.
+
+</section>
+
+<section id="request">
+
+## The transparency request
+
+Version 0.1, draft. Each ask maps to a row in the [ledger](#ledger). We ask the Election Commission of India to publish:
+
+1. **Source code** of ECINet components that handle electoral-roll decisions and role permissions. If full publication is not possible, provide access for independent reviewers under published terms.
+2. **An architecture description** showing components, data flows, and where each statutory function is executed and recorded.
+3. **The role-permission matrix**: every role, including administrator and headquarters roles, and the actions each role can take.
+4. **The review committee's terms of reference, its members' affiliations, its method, and its report.**
+5. **A changelog** of releases that affect roles, permissions, or electoral-roll decisions, with dates.
+6. **Build verification**: hashes or signed build records that let an observer confirm which version is running.
+7. **A vulnerability disclosure policy**, so that researchers can report problems safely.
+
+<Alert>
+  <AlertTitle>We are not asking for</AlertTitle>
+  <AlertDescription>
+    Voter data of any kind, credentials, cryptographic keys, infrastructure or network details, or
+    any other operational secret. None of the requests above requires them, and we will not publish
+    such material if we receive it.
+  </AlertDescription>
+</Alert>
+
+<Alert>
+  <AlertTitle>Right to Information application: planned</AlertTitle>
+  <AlertDescription>
+    We will file this request under the Right to Information Act, 2005. Once it is filed, this
+    notice will show the filing date, the public authority, and each response. The filer's personal
+    details will not be published.
+  </AlertDescription>
+</Alert>
+
+</section>
+
+<section id="method" data-tone="warm">
+
+## Method and corrections
+
+**Sources.** We prefer primary documents: statutes, official notices, and statements from the bodies that operate each system. Press reports are used only where no primary document is available, and they are labelled as such. We cite sources by publisher, title and date without linking to them. Links and archived copies for every source are in the [public repository](https://github.com/akshatagarwl/openelections/blob/master/research).
+
+**Labels.** <Badge>Fact</Badge> means verifiable from a cited document. <Badge variant="secondary">Official claim</Badge> means something an authority says, which the public cannot yet check. <Badge variant="outline">Analysis</Badge> means our own reasoning. <Badge variant="ghost">Open question</Badge> means something that public evidence cannot yet answer.
+
+**Scope.** This page never requests or publishes voter data, credentials, keys, infrastructure details or other operational secrets.
+
+**Corrections.** Report errors through [GitHub issues](https://github.com/akshatagarwl/openelections/issues). Every correction is recorded below with its date and reason, and the repository history shows every change.
+
+| Date              | Change                           |
+| ----------------- | -------------------------------- |
+| 29 September 2026 | First draft published for review |
+
+</section>
+
+[^pib-2025-05]: Election Commission of India, via Press Information Bureau, "ECI to soon launch a single-point App for stakeholders; to subsume over existing 40 IT Apps with enhanced UI/UX", press release ID 2126682, 4 May 2025.
+
+[^pib-2026-01]: Election Commission of India, via Press Information Bureau, "ECINET Digital Platform launched at IICDEM-2026", press release ID 2217429, January 2026.
+
+[^pib-2026-09-26]: Election Commission of India, via Press Information Bureau, "The meeting of the Commission was held today i.e. 26.09.2026", press release ID 2315309, 26 September 2026.
+
+[^pti-2026-09-24]: Press Trust of India, "ECINet decentralised, field officials retain statutory powers: EC officials", 24 September 2026. A press report quoting unnamed officials.
+
+[^ch-bk]: Swiss Federal Chancellery, "Examination of systems" (e-voting), accessed 29 September 2026.
+
+[^ch-oev]: Swiss Federal Chancellery Ordinance on Electronic Voting (OEV), SR 161.116, Art. 11, 25 May 2022.
+
+[^ch-post]: Swiss Post, "Publications and source code" (e-voting), accessed 29 September 2026.
+
+[^ee-docs]: Estonian State Electoral Office, "Documents about Internet Voting", accessed 29 September 2026.
+
+[^ee-repo]: Estonian State Electoral Office, IVXV source repository README (valimised/ivxv), accessed 29 September 2026.
+
+[^br-2026]: Tribunal Superior Eleitoral, "Eleições 2026: códigos-fonte dos sistemas eleitorais continuam abertos para inspeções", April 2026.
+
+[^br-tps]: Tribunal Superior Eleitoral, "Teste Público de Segurança dos Sistemas Eleitorais (TPU)", accessed 29 September 2026.
+
+[^br-hash]: Tribunal Superior Eleitoral, "Resumos digitais (hashes) dos sistemas eleitorais", accessed 29 September 2026; TSE Resolution 23.673, 14 December 2021.
+
+[^us-vx]: VotingWorks, VxSuite source repository README (votingworks/vxsuite), accessed 29 September 2026.
+
+[^us-eac-vx]: U.S. Election Assistance Commission, "VotingWorks VxSuite 4.0", certification record, 15 September 2026.
+
+[^eg-spec]: ElectionGuard, "Official specifications", versions 0.85 to 2.1, accessed 29 September 2026.
+
+[^no-nik]: Østvold et al., "Public review of e-voting source code: Lessons learnt from E-vote 2011", Norsk informatikkonferanse (NIK), 2012. An academic source.
+
+[^no-audit]: Norwegian Ministry of Local Government and Regional Development, "Source code audit of Norwegian electronic voting system", 2013.
+
+[^no-end]: Government of Norway, "E-valgforsøket", accessed 29 September 2026.

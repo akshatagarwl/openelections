@@ -1,21 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
   color-scheme: light;
-  background: #f8fafc;
-  color: #111827;
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -40,6 +31,7 @@
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 0.625rem;
+  --surface-warm: oklch(0.965 0.007 90);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -50,17 +42,12 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-body {
-  margin: 0;
-}
-
-a {
-  color: inherit;
-}
-
 @theme inline {
   --font-heading: var(--font-sans);
-  --font-sans: var(--font-sans);
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+  /* Section surfaces from the uselayouts landing page. */
+  --color-surface-warm: var(--surface-warm);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -145,4 +132,30 @@ a {
   html {
     @apply font-sans;
   }
+}
+
+/* Single-page bands: each top-level section is full-bleed; padding centres one start-aligned container. */
+@layer components {
+  .page > section,
+  .page > .footnotes {
+    padding-inline: max(1.5rem, calc((100% - var(--container-6xl)) / 2));
+    @apply scroll-mt-16 py-16 lg:py-24;
+  }
+  .page > section[data-tone="warm"],
+  .page > .footnotes {
+    @apply bg-surface-warm;
+  }
+  .page > section.dark {
+    @apply bg-background text-foreground;
+  }
+  /* Let long cells in Markdown tables wrap instead of clipping. */
+  .page td,
+  .page th {
+    white-space: normal;
+  }
+}
+
+/* Unlayered so it wins over the typography plugin: buttons keep their own look. */
+.page [data-slot="button"] {
+  text-decoration: none;
 }

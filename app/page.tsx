@@ -1,80 +1,81 @@
-const links = [
-  {
-    href: "https://github.com/cloudflare/vinext",
-    label: "vinext",
-  },
-  {
-    href: "https://developers.cloudflare.com/workers/",
-    label: "Workers",
-  },
+import Content from "@/content/en/page.mdx";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
+const repo = "https://github.com/akshatagarwl/openelections";
+
+const sections = [
+  { href: "#ecinet", label: "ECINet" },
+  { href: "#ledger", label: "Ledger" },
+  { href: "#compare", label: "Compare" },
+  { href: "#request", label: "Request" },
+  { href: "#method", label: "Method" },
 ];
 
-export const revalidate = 300;
+// Markdown tables render as the stock shadcn Table.
+const components = {
+  table: Table,
+  thead: TableHeader,
+  tbody: TableBody,
+  tr: TableRow,
+  th: TableHead,
+  td: TableCell,
+};
 
-export default function Home() {
+export default function Page() {
   return (
-    <main className="min-h-screen bg-slate-50 px-6 py-10 text-slate-950">
-      <section className="mx-auto flex max-w-4xl flex-col gap-8">
-        <div className="flex flex-col gap-4">
-          <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
-            vinext + Cloudflare Workers
-          </p>
-          <h1 className="max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">
-            Build Next.js-style apps with Vite and deploy them to the edge.
-          </h1>
-          <p className="max-w-2xl text-lg leading-8 text-slate-700">
-            This App Router project is wired for vinext, Tailwind CSS, and Cloudflare Workers.
-          </p>
-        </div>
-
-        <div className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-lg border border-slate-200 bg-white p-5">
-            <h2 className="font-semibold">Develop</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
-              Run the vinext dev server locally.
-            </p>
-            <code className="mt-4 block rounded bg-slate-100 px-3 py-2 text-sm">pnpm run dev</code>
-          </div>
-          <div className="rounded-lg border border-slate-200 bg-white p-5">
-            <h2 className="font-semibold">Build</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
-              Create Worker-ready production output.
-            </p>
-            <code className="mt-4 block rounded bg-slate-100 px-3 py-2 text-sm">
-              pnpm run build
-            </code>
-          </div>
-          <div className="rounded-lg border border-slate-200 bg-white p-5">
-            <h2 className="font-semibold">Deploy</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
-              Ship the generated Worker with Wrangler.
-            </p>
-            <code className="mt-4 block rounded bg-slate-100 px-3 py-2 text-sm">
-              pnpm run deploy
-            </code>
-          </div>
-        </div>
-
-        <nav className="flex flex-wrap gap-3">
-          {links.map((link) => (
-            <a
-              className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium hover:bg-slate-100"
-              href={link.href}
-              key={link.href}
-              rel="noreferrer"
-              target="_blank"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium hover:bg-slate-100"
-            href="/api/hello"
-          >
-            API route
+    <>
+      <header className="sticky top-0 z-10 border-b bg-background/90 px-6 backdrop-blur">
+        <nav aria-label="Sections" className="mx-auto flex max-w-6xl items-center gap-2 py-3">
+          <a href="#top" className="flex items-center gap-2 font-semibold tracking-tight">
+            <img src="/mark.svg" alt="" width={28} height={28} />
+            <span>
+              openelections<span className="text-muted-foreground">.in</span>
+            </span>
           </a>
+          <div className="ms-auto hidden items-center gap-1 md:flex">
+            {sections.map((s) => (
+              <Button
+                key={s.href}
+                variant="ghost"
+                size="sm"
+                nativeButton={false}
+                render={<a href={s.href} />}
+              >
+                {s.label}
+              </Button>
+            ))}
+          </div>
+          <Button variant="outline" size="sm" nativeButton={false} render={<a href={repo} />}>
+            GitHub
+          </Button>
         </nav>
-      </section>
-    </main>
+      </header>
+
+      <main id="top">
+        <article className="page prose max-w-none prose-neutral prose-headings:text-balance prose-headings:tracking-tight prose-h1:text-4xl prose-h2:text-3xl prose-p:max-w-prose prose-li:max-w-prose sm:prose-h1:text-5xl sm:prose-h2:text-4xl">
+          <Content components={components} />
+        </article>
+      </main>
+
+      <footer className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-muted-foreground">
+        <Separator />
+        <p>
+          Content under CC BY 4.0, code under MIT. Corrections and new sources go to{" "}
+          <a className="underline underline-offset-4" href={`${repo}/issues`}>
+            GitHub issues
+          </a>
+          .
+        </p>
+      </footer>
+    </>
   );
 }
