@@ -92,11 +92,11 @@ const workflows: Record<
   },
   history: {
     index: "05",
-    text: "Our demand: publish version history and deployment records so changes to validation, permissions and restoration can be traced.",
+    text: "Our demand: every current and future module must have public change history, review status and deployment records—not only the parts questioned today.",
   },
   builds: {
     index: "06",
-    text: "Our demand: publish dependencies, build inputs and release hashes, with evidence connecting reviewed code to deployments.",
+    text: "Our demand: publish dependencies, build inputs and signed hashes for every release, and retain evidence connecting reviewed code to deployments.",
   },
 };
 const workflowButtons =
@@ -240,7 +240,7 @@ const observer = new IntersectionObserver(
 );
 observer.observe(figure);
 
-const checklist = `OpenElections.in — our demand to the ECI\n\nOpen-source the ECINet/ERONet components that validate voter applications, control official access and restore voters, with supporting code and evidence for repeatable public audits.\n\n1. Relevant source code: publish application validation, role permissions, restoration workflows, overrides and audit-trail logic, with dependencies and an open-source licence permitting inspection, running, modification, redistribution and publication of findings. Provide synthetic test data.\n2. Architecture & permissions: disclose data flows, trust boundaries and statutory role mappings.\n3. Audit reports & remediation: publish scope, methods, versions, findings and fixes, with safety-conscious redactions.\n4. Version & change history: tag releases and document changes and deployments.\n5. Reproducible builds: publish pinned inputs, build instructions and signed hashes; connect releases to deployments with attestations.\n\nProtect personal data, passwords, private keys and live credentials. This demand concerns the relevant electoral-roll components, not every ECINet service and not public access to live systems.\nAn expert review does not replace public scrutiny. This is a nonpartisan demand, not an allegation of manipulation or a claim of an existing legal publication duty.\n\nRead and share the demand: https://openelections.in/#checklist\nPrimary sources: https://openelections.in/#sources`;
+const checklist = `OpenElections.in — our demand to the ECI\n\nMake source code of ECINet/ERONet public. Adopt a standing open-source publication policy for all code that implements election rules or mediates statutory powers: current components, future modules and every update. Today's reported concerns are examples, not the boundary of this demand.\n\n1. Source code: maintain public repositories, dependencies and synthetic tests for every qualifying component. Publish new modules and changes before deployment, under an open-source licence permitting inspection, use, modification and redistribution. Publication must not depend on a controversy.\n2. Architecture & permissions: keep data flows, trust boundaries and statutory role mappings current as modules and rules change.\n3. Audit reports & remediation: identify the scope and versions examined; state review coverage and gaps for each release. Publish findings and fixes, and reassess changes affecting rules or permissions.\n4. Version & change history: tag every release and preserve change, approval and deployment records, including rule-affecting configuration, feature flags and emergency fixes.\n5. Reproducible builds: publish pinned inputs, build instructions and signed hashes for every release; connect releases to deployments with attestations and preserve earlier records.\n\nProtect personal data, passwords, private keys and live credentials. Coordinate disclosure of exploitable vulnerabilities. Openness concerns public-interest logic, not public access to live systems.\nAn expert review does not replace ongoing public scrutiny. This is a nonpartisan demand, not an allegation of manipulation or a claim of an existing legal publication duty.\n\nRead and share the demand: https://openelections.in/#checklist\nEvidence and sources: https://openelections.in/#sources`;
 const copyButton =
   document.querySelector<HTMLButtonElement>("#copy-checklist")!;
 copyButton.addEventListener("click", async () => {

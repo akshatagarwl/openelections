@@ -64,7 +64,7 @@ components:
 
 **Creative North Star: "The open systems exhibit"**
 
-The user-selected visual world combines a public exhibition's legibility with technical diagrams that can actually be inspected. It uses generous light reading fields, dark system panels and a restrained green emphasis. It is an explicit nonpartisan demand, backed by evidence, not an official government interface. The investigative design serves a scoped demand to open-source electoral-roll code.
+The user-selected visual world combines a public exhibition's legibility with technical diagrams that can actually be inspected. It uses generous light reading fields, dark system panels and a restrained green emphasis. It is an explicit nonpartisan demand, backed by evidence, not an official government interface. The investigative design serves an enduring publication rule for code that implements election rules or mediates statutory powers, including future modules and every update. Current concerns are examples, not the scope boundary.
 
 **Key Characteristics:**
 - Strong, clean typography with spacious editorial pacing.
@@ -118,10 +118,10 @@ Two native toggle buttons share a frame. The active view is forest. Switching up
 Five chapter links sit in a sticky rule-bound strip. A thin scroll-progress line shows reading progress; the current chapter also has a short underline and `aria-current`. Mobile navigation scrolls naturally with no drag-only gesture.
 
 ### Concern ledger
-Three rule-separated rows connect a reported concern to the code requested and a concrete audit question. Attribution remains beside each reported claim. The requested-code column uses a quiet tinted field, while ECI's response is presented separately. Mobile stacks each row in the same evidence-to-demand order.
+Three rule-separated rows connect a current reported concern to a concrete audit question. The section is titled “Why openness matters”; these examples must not be presented as an exhaustive inventory of code to publish. Attribution remains beside each reported claim. The requested-code column uses a quiet tinted field, while ECI's response is presented separately. Mobile stacks each row in the same evidence-to-demand order.
 
 ### Disclosure list
-Native details/summary rows contain five required disclosures supporting the open-source demand. One row opens at a time. An icon rotates to indicate expansion; the content also works without JavaScript.
+Native details/summary rows contain five continuing disclosures supporting the standing publication policy: source, architecture, review coverage, change history and reproducible releases. The visible introduction makes future modules and updates explicit. One row opens at a time. An icon rotates to indicate expansion; the content also works without JavaScript.
 
 ### Sources
 Source entries are numbered, linked and publication-attributed. Targeted entries receive an inset tonal highlight. External links explicitly name their new-tab behavior for assistive technology.

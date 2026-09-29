@@ -23,7 +23,7 @@ for (const viewport of [
         .evaluate((el) => el.scrollWidth <= el.clientWidth),
     ).toBe(true);
     await expect(page.locator(".hero-deck")).toContainText(
-      "We demand that ECI open-source the parts",
+      "We demand that ECI open-source every part",
     );
     await expect(page.locator(".primary-link")).toHaveAttribute(
       "href",
@@ -106,7 +106,11 @@ test("checklist, clipboard and download fallback work", async ({
   await expect(page.getByRole("status")).toContainText("Demand copied");
   const copied = await page.evaluate(() => navigator.clipboard.readText());
   expect(copied).toContain("our demand to the ECI");
-  expect(copied).toContain("Open-source the ECINet/ERONet components");
+  expect(copied).toContain(
+    "current components, future modules and every update",
+  );
+  expect(copied).toContain("standing open-source publication policy");
+  expect(copied).toContain("not the boundary of this demand");
   expect(copied).toContain("Reproducible builds");
   expect(copied).toContain("Protect personal data");
   await page.evaluate(() => {
@@ -205,7 +209,7 @@ test("the demand is explicit, scoped, and reachable from the main action", async
   await expect(page).toHaveURL(/#checklist$/);
   await expect(page.locator("#checklist-title")).toBeInViewport();
   await expect(page.locator("#checklist-title")).toContainText(
-    "Open-source the",
+    "Public by default.",
   );
   await expect(page.locator(".checklist-caption")).toContainText(
     "not voter data",
@@ -213,6 +217,24 @@ test("the demand is explicit, scoped, and reachable from the main action", async
   await expect(page.locator(".checklist-caption")).toContainText(
     "run, modify and share",
   );
+  await expect(page.locator(".hero-deck")).toContainText(
+    "future modules and every update",
+  );
+  await expect(page.locator(".section-heading").first()).toContainText(
+    "examples—not the boundary",
+  );
+  await expect(page.locator(".checklist-intro")).toContainText(
+    "standing publication policy",
+  );
+  await expect(page.locator(".checklist-caption")).toContainText(
+    "before deployment",
+  );
+  await expect(page.locator(".checklist-items details").first()).toContainText(
+    "Publication must not depend on a complaint or controversy",
+  );
+  await expect(
+    page.getByRole("link", { name: "01 Why openness matters" }),
+  ).toBeVisible();
   await expect(page.locator(".concern-row")).toHaveCount(3);
   await expect(page.locator(".concern-row a[href='#source-8']")).toHaveCount(3);
   await expect(page.locator("#source-7")).toContainText("EDITORIAL OPINION");

@@ -80,9 +80,10 @@ The public-artifact statement is narrowly worded: the reviewed material did not 
 - Shared software makes implementation and permission rules consequential.
 - Commissioned expert review and public verification are complementary and distinct.
 - Source disclosure alone does not prove a live deployment matches reviewed code.
-- The site demands open-source release of the relevant ECINet/ERONet components for application validation, official permissions and voter restoration, with supporting dependencies and audit evidence. The five disclosures support this central demand.
+- The site demands a standing open-source publication policy for all ECINet/ERONet code that implements election rules or mediates statutory powers—current components, future modules and every update. Current application-validation, official-permission and restoration reports are illustrations, not an exhaustive scope.
+- Publication before deployment, review coverage for each release, preserved version history, rule-affecting configuration and feature-flag records, and deployment attestations are demands for continuing auditability, not descriptions of present ECI practice.
 - This is an advocacy position, not a claim of an existing legal duty to publish code. The protected-data boundaries are part of the demand.
-- Source availability is the starting point; the demand also seeks permission to run, modify and redistribute the released components. This is not a demand to open every ECINet service or expose production access. The website's own MIT licence is separate.
+- Source availability is the starting point; the demand also seeks permission to run, modify and redistribute the released code. The boundary excludes personal data, credentials and live operational access—not future or currently undisputed public-interest logic. The website's own MIT licence is separate.
 - Build reproducibility should be paired with signed artifacts and deployment attestations.
 
 All diagrams are explicitly illustrative. No diagram purports to disclose ECINet's actual topology, a vulnerability, or a mechanism for changing votes.

@@ -13,7 +13,7 @@ const provenance =
   "Original OpenElections.in vector artwork rendered from scripts/generate-og.mjs; Manrope SIL OFL. Illustrative ECINet diagram, not disclosed architecture.";
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
 <title id="title">Make source code of ECINet/ERONet public</title>
-<desc id="desc">OpenElections.in. A nonpartisan demand for public scrutiny of electoral-roll software. A conceptual diagram connects Form 6, permissions and restoration.</desc>
+<desc id="desc">OpenElections.in. A demand for public scrutiny of election software, now and in every future release. Form 6, permissions and restoration are current examples, not the boundary of the demand.</desc>
 <metadata>${provenance}</metadata>
 <defs><style>
 @font-face { font-family: Manrope; font-style: normal; font-weight: 200 800; src: url(data:font/woff2;base64,${font.toString("base64")}) format('woff2'); }
@@ -29,7 +29,7 @@ text { font-family: Manrope, sans-serif; }
 <text x="58" y="295" fill="#243b2e">of ECINet/ERONet</text>
 <text x="58" y="377" fill="#426b41">public.</text>
 </g>
-<text x="62" y="442" fill="#526149" font-size="21">Publish the relevant code. Protect people’s data.</text>
+<text x="62" y="442" fill="#526149" font-size="21">Public code. Future modules. Every update.</text>
 <rect x="806" y="151" width="334" height="334" rx="4" fill="#25392e"/>
 <g fill="none" stroke="#819768" stroke-width="1">
 <circle cx="973" cy="318" r="106" opacity=".3" stroke-dasharray="2 5"/>
@@ -45,7 +45,7 @@ text { font-family: Manrope, sans-serif; }
 <text x="872" y="323" text-anchor="middle" fill="#e0e8d5" font-size="11">Permissions</text>
 <rect x="1024" y="301" width="101" height="35" rx="3" fill="#2a3f30" stroke="#627951"/>
 <text x="1074" y="323" text-anchor="middle" fill="#e0e8d5" font-size="11">Restoration</text>
-<text x="973" y="441" text-anchor="middle" fill="#becfa9" font-size="10" letter-spacing=".7">PUBLICLY AUDITABLE CODE</text>
+<text x="973" y="441" text-anchor="middle" fill="#becfa9" font-size="10" letter-spacing=".7">EVERY MODULE. EVERY RELEASE.</text>
 <path d="M60 520H1140" stroke="#cccec2"/>
 <text x="62" y="568" fill="#243b2e" font-size="17" font-weight="650">openelections.in</text>
 <text x="1140" y="568" text-anchor="end" fill="#626a60" font-size="15">Read the evidence. Share the demand.</text>

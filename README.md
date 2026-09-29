@@ -1,6 +1,6 @@
 # OpenElections.in
 
-A nonpartisan demand that ECI open-source the electoral-roll components of ECINet/ERONet for repeatable public audits. The interactive documentary connects three reported concerns—Form 6 validation, officer permissions and voter restoration—to the code and tests needed to examine them. This is an independent project, not an ECI service.
+A nonpartisan demand for a standing open-source publication policy for ECINet/ERONet code that implements election rules or mediates statutory powers: current components, future modules and every update. Three current reported concerns—Form 6 validation, officer permissions and voter restoration—illustrate the need; they do not bound the scope. The site demands continuing source, review, change-history and deployment evidence rather than a one-time audit. This is an independent project, not an ECI service.
 
 ## Run
 
@@ -61,7 +61,7 @@ The site intentionally uses native HTML, CSS and Vite rather than a component fr
 
 ## Editorial guardrails
 
-Research baseline: **29 September 2026**. ECI statements are attributed. A commissioned review is not represented as a completed audit. The open-source demand is an advocacy position, not a claim of an existing statutory publication requirement. The demand is scoped to relevant components and their dependencies, not voter records, operational secrets or unrestricted production access. Source availability alone does not grant permission to run, modify or redistribute code; the demand seeks those permissions too. This website's MIT licence is separate. The original investigation, follow-up explainer and editorial are distinctly labelled; internal records reported by the newspaper were not independently obtained by this site. A bounded failure to establish public artifacts is not proof of manipulation or proof that the artifacts do not exist.
+Research baseline: **29 September 2026**. ECI statements are attributed. A commissioned review is not represented as a completed audit. The open-source demand is an advocacy position, not a claim of an existing statutory publication requirement. Scope is defined by function, not controversy: all current and future components implementing election rules or mediating statutory powers, with their required dependencies. It excludes voter records, operational secrets and unrestricted production access. Code and synthetic tests should be public before deployment, with review status and signed artifacts for each release and retained change/deployment records. Source availability alone does not grant permission to run, modify or redistribute code; the demand seeks those permissions too. This website's MIT licence is separate. The original investigation, follow-up explainer and editorial are distinctly labelled; internal records reported by the newspaper were not independently obtained by this site. A bounded failure to establish public artifacts is not proof of manipulation or proof that the artifacts do not exist.
 
 See `SOURCES.md` before changing factual claims. The ECINet diagrams are conceptual. Estonia and Switzerland are examples of disclosure practice for internet-voting systems, not equivalents to ECINet and not recommendations for Indian internet voting.
 
