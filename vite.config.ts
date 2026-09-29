@@ -1,4 +1,6 @@
 import { defineConfig, lazyPlugins } from "vite-plus";
+import mdx from "@mdx-js/rollup";
+import remarkGfm from "remark-gfm";
 import vinext from "vinext";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import { staticAssetsAdapter } from "@vinext/cloudflare/cache/static-assets-adapter";
@@ -27,6 +29,13 @@ export default defineConfig({
     options: { typeAware: true, typeCheck: true },
   },
   plugins: lazyPlugins(() => [
+    {
+      enforce: "pre",
+      ...mdx({
+        remarkPlugins: [remarkGfm],
+        remarkRehypeOptions: { footnoteLabel: "Sources", footnoteLabelTagName: "h2" },
+      }),
+    },
     vinext({
       cache: { cdn: staticAssetsAdapter() },
       prerender: { routes: "*" },
