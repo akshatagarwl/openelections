@@ -13,7 +13,11 @@ export default defineConfig({
   // Vite Task: `vp run build` / `vp run check` are cached and replayed when inputs are unchanged.
   run: {
     tasks: {
-      check: "vp check",
+      check: {
+        command: "vp check",
+        // Build output is not source; don't let a fresh build invalidate the check.
+        cache: { input: [{ auto: true }, "!dist/**", "!.wrangler/**", "!.vinext/**"] },
+      },
       build: {
         command: "vp build",
         // The Cloudflare plugin rewrites .wrangler/deploy/config.json on every build; it is output, not input.
