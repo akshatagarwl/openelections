@@ -12,3 +12,9 @@ playwright-report/
 .env
 .env.*
 !.env.example
+
+# Cloudflare build output and local runtime state
+.cloudflare/
+.wrangler
+.dev.vars*
+!.dev.vars.example

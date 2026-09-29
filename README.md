@@ -4,7 +4,7 @@ A nonpartisan demand for a standing open-source publication policy for ECINet/ER
 
 ## Run
 
-Requires Node.js 20.19+ or 22.12+.
+Requires Node.js 22.12 or newer (the Cloudflare `cf` CLI requires Node 22+, and Vite requires at least 22.12 on that line).
 
 ```sh
 npm ci
@@ -18,7 +18,22 @@ npm run build
 npm run preview
 ```
 
-Deploy `dist/` to any static host. No backend, accounts, API keys, cookies, external font requests or analytics. HTTPS is recommended for clipboard access; a text-file download is provided if clipboard access fails.
+The Cloudflare Vite plugin emits Cloudflare Build Output under `.cloudflare/output/`, consumed by `cf deploy --prebuilt`. The site remains static: no backend, accounts, API keys, cookies, external font requests or analytics. HTTPS is recommended for clipboard access; a text-file download is provided if clipboard access fails.
+
+### Deploy with the Cloudflare CLI
+
+Live Workers URL: https://openelections-in.akshatag.workers.dev
+
+```sh
+npx cf auth login          # once, for an authorised Cloudflare account
+npm run build
+npm test
+npx cf deploy --prebuilt   # deploy the exact build just checked
+```
+
+For subsequent deployments, `npm run deploy` builds and deploys through the pinned `cf` CLI. `cloudflare.config.ts` names the static-assets Worker `openelections-in`, enables its `workers.dev` URL, and returns 404 for unknown asset paths. It does not configure a custom domain or modify DNS. Authentication remains in the CLI profile, not the repository; `.cloudflare/`, `.wrangler/` and local credentials are ignored.
+
+The pinned beta CLI and Vite plugin are recorded in the lockfile. Use `npm ci` for repeatable installs. The `undici` patch override fixes GHSA-3wwx-pv8p-q78v in the CLI's local Miniflare tooling; remove it when upstream ships a patched dependency.
 
 The site links directly to the public source repository: [akshatagarwl/openelections](https://github.com/akshatagarwl/openelections). No source ZIP is generated or served.
 
@@ -26,7 +41,7 @@ The site links directly to the public source repository: [akshatagarwl/openelect
 
 The hero and social preview use: **Make source code of ECINet/ERONet public.**
 
-`public/og.png` is a committed 1200 × 630 Open Graph image, with a self-contained editable SVG at `public/og.svg`. Open Graph and Twitter metadata use the production URL `https://openelections.in/og.png`; update those absolute URLs if deploying under a different domain. The image becomes available to social crawlers when `dist/` is deployed.
+`public/og.png` is a committed 1200 × 630 Open Graph image, with a self-contained editable SVG at `public/og.svg`. Open Graph and Twitter metadata use the production URL `https://openelections.in/og.png`; update those absolute URLs if deploying under a different domain. The image becomes available at `/og.png` on the deployed host. The canonical and social URLs intentionally still point to `openelections.in`; that domain must be connected before those production URLs work.
 
 To regenerate the original vector artwork (requires Playwright Chromium):
 
@@ -51,6 +66,7 @@ Playwright covers desktop/mobile screenshots, WCAG A/AA axe checks, 320px overfl
 - `index.html`: complete semantic story and adjacent citations; readable without JavaScript.
 - `src/main.ts`: small progressively enhanced interactions and reading progress.
 - `src/style.css`: responsive exhibition design, self-hosted Manrope, reduced motion and print styles.
+- `cloudflare.config.ts`, `vite.config.ts`: Cloudflare static-assets Worker configuration.
 - `SOURCES.md`: evidence mapping, research limitations and update instructions.
 - `scripts/generate-og.mjs`: reproducible social-preview artwork.
 - `public/og.png`, `public/og.svg`: raster social preview and vector master.

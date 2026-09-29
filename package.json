@@ -8,23 +8,32 @@
     "type": "git",
     "url": "https://github.com/akshatagarwl/openelections.git"
   },
+  "engines": {
+    "node": ">=22.12"
+  },
   "homepage": "https://openelections.in",
   "bugs": "https://github.com/akshatagarwl/openelections/issues",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "og:generate": "node scripts/generate-og.mjs",
     "build": "tsc --noEmit && vite build",
-    "format": "prettier --write index.html src tests scripts playwright.config.ts",
+    "format": "prettier --write index.html src tests scripts playwright.config.ts vite.config.ts cloudflare.config.ts",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "playwright test"
+    "test": "playwright test",
+    "deploy": "npm run build && cf deploy --prebuilt"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.8",
     "lucide": "^0.468.0"
   },
+  "overrides": {
+    "undici": "7.29.1"
+  },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
+    "@cloudflare/vite-plugin": "2.0.0-beta.sha-ad79608dd",
     "@playwright/test": "^1.51.0",
+    "cf": "1.0.0-beta.5",
     "prettier": "^3.9.9",
     "typescript": "^5.8.3",
     "vite": "^7.0.0"
