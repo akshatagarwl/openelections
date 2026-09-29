@@ -1,20 +1,76 @@
+import {
+  CheckIcon,
+  ClipboardCheckIcon,
+  ClockIcon,
+  CodeIcon,
+  FileSearchIcon,
+  FingerprintIcon,
+  HistoryIcon,
+  KeyRoundIcon,
+  LockIcon,
+  MinusIcon,
+  NetworkIcon,
+  QuoteIcon,
+  ShieldAlertIcon,
+} from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item";
 
 <section id="summary">
 
-<Badge variant="outline">Last reviewed 29 September 2026 · v0.1 draft</Badge>
+# Can the public verify ECINet?
 
-# What can the public verify about ECINet?
+<p className="lead">
+  Not yet. Of seven things that would let anyone check how the Election Commission's platform works,
+  none is public.
+</p>
 
-ECINet is the Election Commission of India's single platform for electoral services and for the work of election officials. The Commission has described how the platform is organised and who can do what on it. As of the date above, we could not find any published source code, architecture document, role-permission matrix, audit report, release history or build verification for ECINet. The public therefore cannot yet check the Commission's statements independently.
+<div className="not-prose grid gap-4 sm:grid-cols-3">
+  <Card>
+    <CardHeader>
+      <CardDescription>Public</CardDescription>
+      <CardTitle className="text-4xl">0 of 7</CardTitle>
+    </CardHeader>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardDescription>Only claimed or announced</CardDescription>
+      <CardTitle className="text-4xl">4</CardTitle>
+    </CardHeader>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardDescription>Nothing found</CardDescription>
+      <CardTitle className="text-4xl">3</CardTitle>
+    </CardHeader>
+  </Card>
+</div>
 
-This page sets out what is public, what is only stated, and what is missing. It compares this with what other election systems publish, and it makes a specific, limited request for disclosure.
-
-<Button nativeButton={false} render={<a href="#request" />}>
-  Read the request
-</Button>
+<div className="not-prose flex flex-wrap items-center gap-3">
+  <Button nativeButton={false} render={<a href="#request" />}>
+    Read the request
+  </Button>
+  <Button variant="ghost" nativeButton={false} render={<a href="#ledger" />}>
+    See the seven
+  </Button>
+</div>
 
 </section>
 
@@ -22,151 +78,362 @@ This page sets out what is public, what is only stated, and what is missing. It 
 
 ## What ECINet is
 
-Every statement on this page carries one of four labels: <Badge>Fact</Badge> <Badge variant="secondary">Official claim</Badge> <Badge variant="outline">Analysis</Badge> <Badge variant="ghost">Open question</Badge>
+One platform for electors, officials and parties. Electoral-roll documents are uploaded to it "for decision by the ERO".[^pib-2026-09-26]
 
-<Badge>Fact</Badge> In May 2025 the Commission announced ECINet as a single platform that would
-"integrate and reorient over 40" of its existing mobile and web applications, for electors, election
-officials, political parties and civil society.[^pib-2025-05]
-
-<Badge>Fact</Badge> The Commission launched ECINet at the India International Conference on
-Democracy and Election Management (IICDEM) 2026, held from 21 to 23 January 2026 in New
-Delhi.[^pib-2026-01]
-
-<Badge>Fact</Badge> During the Special Intensive Revision of electoral rolls, the Commission
-directed Booth Level Officers to collect documents from electors and "upload them on the ECINet, for
-decision by the ERO" (the Electoral Registration Officer).[^pib-2026-09-26] ECINet is therefore part
-of how decisions on electoral rolls are recorded.
-
-<Badge variant="secondary">Official claim</Badge> On 26 September 2026 the Commission stated:
-
-> Field officers have role-based access to the ECINET system as per their statutory powers.[^pib-2026-09-26]
-
-<Badge variant="secondary">Official claim</Badge> Two days earlier, news agencies quoted unnamed
-Commission officials as saying that ECINet is "decentralised" and that statutory functions can be
-performed only by the designated election officials, not by anyone at the Commission's
-headquarters.[^pti-2026-09-24] This was reported by the press and is not a signed Commission
-document.
-
-<Badge>Fact</Badge> In the same 26 September 2026 statement, the Commission said that a committee
-headed by a Senior Deputy Election Commissioner, including an independent expert from an IIT or
-IIIT, "will review the ECINET to double-check that it complies with the provisions of the Acts and
-Rules and submit report to the Commission".[^pib-2026-09-26]
+<ItemGroup className="not-prose">
+  <Item variant="outline">
+    <ItemMedia>
+      <Badge variant="outline">May 2025</Badge>
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>
+        <span>Announced as one platform replacing 40+ apps[^pib-2025-05]</span>
+      </ItemTitle>
+    </ItemContent>
+    <ItemActions>
+      <Badge>
+        <CheckIcon data-icon="inline-start" />
+        Fact
+      </Badge>
+    </ItemActions>
+  </Item>
+  <Item variant="outline">
+    <ItemMedia>
+      <Badge variant="outline">Jan 2026</Badge>
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>
+        <span>Launched at IICDEM 2026, New Delhi[^pib-2026-01]</span>
+      </ItemTitle>
+    </ItemContent>
+    <ItemActions>
+      <Badge>
+        <CheckIcon data-icon="inline-start" />
+        Fact
+      </Badge>
+    </ItemActions>
+  </Item>
+  <Item variant="outline">
+    <ItemMedia>
+      <Badge variant="outline">24 Sep 2026</Badge>
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>
+        <span>Unnamed officials call it "decentralised"[^pti-2026-09-24]</span>
+      </ItemTitle>
+      <ItemDescription>Press report, not a Commission document</ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Badge variant="secondary">
+        <QuoteIcon data-icon="inline-start" />
+        Claim
+      </Badge>
+    </ItemActions>
+  </Item>
+  <Item variant="outline">
+    <ItemMedia>
+      <Badge variant="outline">26 Sep 2026</Badge>
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>
+        <span>"Role-based access … as per their statutory powers"[^pib-2026-09-26]</span>
+      </ItemTitle>
+    </ItemContent>
+    <ItemActions>
+      <Badge variant="secondary">
+        <QuoteIcon data-icon="inline-start" />
+        Claim
+      </Badge>
+    </ItemActions>
+  </Item>
+  <Item variant="outline">
+    <ItemMedia>
+      <Badge variant="outline">26 Sep 2026</Badge>
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>
+        <span>Review committee announced, with an IIT or IIIT expert[^pib-2026-09-26]</span>
+      </ItemTitle>
+    </ItemContent>
+    <ItemActions>
+      <Badge>
+        <CheckIcon data-icon="inline-start" />
+        Fact
+      </Badge>
+    </ItemActions>
+  </Item>
+</ItemGroup>
 
 </section>
 
 <section id="ledger">
 
-## Transparency ledger
+## The seven
 
-For each artefact, the ledger records what we found in public sources, checked on 29 September 2026. <Badge variant="outline">None found</Badge> means we searched and found nothing public. It does not mean the artefact does not exist. If you know of a public source, please open an issue.
+What we found in public sources on 29 September 2026. "None found" means we looked and found nothing, not that it does not exist.
 
-| Artefact                      | Status                                       | What is public                                                               | What is missing                                                                   |
-| ----------------------------- | -------------------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Source code                   | <Badge variant="outline">None found</Badge>  | Nothing found                                                                | Any published repository, or access for independent reviewers                     |
-| Architecture                  | <Badge variant="secondary">Claimed</Badge>   | Descriptions of the platform as "decentralised"[^pti-2026-09-24]             | A component and data-flow description                                             |
-| Role permissions (RBAC)       | <Badge variant="secondary">Claimed</Badge>   | "Role-based access … as per their statutory powers"[^pib-2026-09-26]         | A matrix of roles against actions, including administrator and headquarters roles |
-| Audit scope and reports       | <Badge variant="secondary">Announced</Badge> | A review committee has been announced[^pib-2026-09-26]                       | Terms of reference, membership, method, and a published report                    |
-| Release history               | <Badge variant="secondary">Claimed</Badge>   | "Various upgradations of the portal have already been made"[^pib-2026-09-26] | A dated changelog of changes that affect roles or electoral-roll decisions        |
-| Production version and hashes | <Badge variant="outline">None found</Badge>  | Nothing found                                                                | A way to confirm which version is running                                         |
-| Public security testing       | <Badge variant="outline">None found</Badge>  | Nothing found                                                                | A bug bounty, a public test, or a vulnerability disclosure policy                 |
+<ItemGroup className="not-prose grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+  <Item variant="outline">
+    <ItemMedia variant="icon">
+      <CodeIcon />
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Source code</ItemTitle>
+      <ItemDescription>Nothing published</ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Badge variant="outline">
+        <MinusIcon data-icon="inline-start" />
+        None found
+      </Badge>
+    </ItemActions>
+  </Item>
+  <Item variant="outline">
+    <ItemMedia variant="icon">
+      <NetworkIcon />
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Architecture</ItemTitle>
+      <ItemDescription>
+        <span>"Decentralised", per press[^pti-2026-09-24]</span>
+      </ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Badge variant="secondary">
+        <QuoteIcon data-icon="inline-start" />
+        Claimed
+      </Badge>
+    </ItemActions>
+  </Item>
+  <Item variant="outline">
+    <ItemMedia variant="icon">
+      <KeyRoundIcon />
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Role permissions</ItemTitle>
+      <ItemDescription>
+        <span>"Role-based access", no matrix[^pib-2026-09-26]</span>
+      </ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Badge variant="secondary">
+        <QuoteIcon data-icon="inline-start" />
+        Claimed
+      </Badge>
+    </ItemActions>
+  </Item>
+  <Item variant="outline">
+    <ItemMedia variant="icon">
+      <ClipboardCheckIcon />
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Audit and report</ItemTitle>
+      <ItemDescription>
+        <span>Committee announced, no terms or report[^pib-2026-09-26]</span>
+      </ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Badge variant="secondary">
+        <ClockIcon data-icon="inline-start" />
+        Announced
+      </Badge>
+    </ItemActions>
+  </Item>
+  <Item variant="outline">
+    <ItemMedia variant="icon">
+      <HistoryIcon />
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Release history</ItemTitle>
+      <ItemDescription>
+        <span>"Various upgradations", no changelog[^pib-2026-09-26]</span>
+      </ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Badge variant="secondary">
+        <QuoteIcon data-icon="inline-start" />
+        Claimed
+      </Badge>
+    </ItemActions>
+  </Item>
+  <Item variant="outline">
+    <ItemMedia variant="icon">
+      <FingerprintIcon />
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Running version</ItemTitle>
+      <ItemDescription>No hashes or build records</ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Badge variant="outline">
+        <MinusIcon data-icon="inline-start" />
+        None found
+      </Badge>
+    </ItemActions>
+  </Item>
+  <Item variant="outline">
+    <ItemMedia variant="icon">
+      <ShieldAlertIcon />
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Security testing</ItemTitle>
+      <ItemDescription>No bug bounty or disclosure policy</ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Badge variant="outline">
+        <MinusIcon data-icon="inline-start" />
+        None found
+      </Badge>
+    </ItemActions>
+  </Item>
+</ItemGroup>
 
 </section>
 
 <section id="review" className="dark prose-invert">
 
-## Institutional review is not public scrutiny
+## Review is not scrutiny
 
-<Badge variant="outline">Analysis</Badge> A review that includes an expert from an IIT or IIIT can
-be valuable. Such experts can examine systems in depth, often under confidentiality, and can raise
-problems internally before they cause harm. The review the Commission has announced is a real step.
+The announced IIT/IIIT review is useful. It answers a different question.
 
-<Badge variant="outline">Analysis</Badge> However, it answers a different question from public
-scrutiny. The difference matters most when public trust itself is in question.
-
-|                            | Institutional review                   | Public scrutiny                 |
-| -------------------------- | -------------------------------------- | ------------------------------- |
-| Who can look               | Appointed reviewers                    | Anyone with the skills and time |
-| What they see              | What they are given access to          | What is published               |
-| Findings                   | Reported to the Commission             | Visible to everyone             |
-| Can others reproduce them? | Only other appointed reviewers         | Yes                             |
-| After each new release     | Only if another review is commissioned | Continuous                      |
-
-<Badge variant="ghost">Open question</Badge> Will the committee's terms of reference, its members'
-affiliations, and its report be published?
+|               | Institutional review | Public scrutiny   |
+| ------------- | -------------------- | ----------------- |
+| Who looks     | Appointed reviewers  | Anyone            |
+| What they see | What they are given  | What is published |
+| Findings      | Go to the Commission | Visible to all    |
+| Reproducible  | By other appointees  | By anyone         |
+| Each release  | If re-commissioned   | Continuously      |
 
 </section>
 
 <section id="compare" data-tone="warm">
 
-## What other election systems publish
+## What others publish
 
-The table below describes what each system publishes. It is not a ranking. The systems differ in kind: some are internet voting, some are voting machines, and one is a toolkit. None of them is the same kind of system as ECINet. We include them because they show that publishing source code, specifications, test reports and build verification is established practice in election technology.
+Different kinds of system, the same question. Not a ranking.
 
-|                                       | Source code                                                                          | Examination or test reports                                                               | Public testing                                                                 | Deployed = published                                                       | Status                        |
-| ------------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------- | ----------------------------- |
-| **Switzerland**, Swiss Post e-voting  | <Badge variant="secondary">Public</Badge> required by law[^ch-bk]                    | <Badge variant="secondary">Public</Badge> since 2022[^ch-bk]                              | Permanent bug bounty required; public intrusion test in 2019[^ch-bk][^ch-post] | Law requires evidence that executables match the published source[^ch-oev] | In use in cantonal trials     |
-| **Estonia**, IVXV internet voting     | <Badge variant="secondary">Public</Badge>[^ee-docs][^ee-repo]                        | Pending check                                                                             | None found                                                                     | Repository states it holds "the code that is used for election"[^ee-repo]  | In use                        |
-| **Brazil**, electronic voting machine | <Badge variant="outline">Restricted</Badge> to accredited oversight bodies[^br-2026] | Pending check                                                                             | Public Security Test held before elections[^br-tps]                            | Hashes published; signing and sealing ceremony[^br-hash]                   | In use                        |
-| **USA**, VotingWorks VxSuite          | <Badge variant="secondary">Public</Badge> (GPL-3.0)[^us-vx]                          | <Badge variant="secondary">Public</Badge> federal test report and certificate[^us-eac-vx] | None found                                                                     | Record of trusted build and hashes published[^us-eac-vx]                   | Certified 15 September 2026   |
-| **ElectionGuard**, toolkit            | <Badge variant="secondary">Public</Badge>[^eg-spec]                                  | Not applicable                                                                            | Not applicable                                                                 | Not applicable                                                             | Specification v2.1            |
-| **Norway**, internet-voting trials    | <Badge variant="secondary">Published</Badge> in 2011[^no-nik]                        | Source-code audit report[^no-audit]                                                       | None found                                                                     | Pending check                                                              | Trials ended in 2014[^no-end] |
+|                           | Source code                                                                                       | Test reports                                                                       | Public testing                                                                    | Build proof                                                                       |
+| ------------------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **ECINet** (India)        | <Badge variant="outline"><MinusIcon data-icon="inline-start" />None found</Badge>                 | <Badge variant="secondary"><ClockIcon data-icon="inline-start" />Announced</Badge> | <Badge variant="outline"><MinusIcon data-icon="inline-start" />None found</Badge> | <Badge variant="outline"><MinusIcon data-icon="inline-start" />None found</Badge> |
+| **Switzerland** e-voting  | <Badge><CheckIcon data-icon="inline-start" />By law</Badge>[^ch-bk]                               | <Badge><CheckIcon data-icon="inline-start" />Since 2022</Badge>[^ch-bk]            | <Badge><CheckIcon data-icon="inline-start" />Bug bounty</Badge>[^ch-bk][^ch-post] | <Badge><CheckIcon data-icon="inline-start" />By law</Badge>[^ch-oev]              |
+| **Estonia** i-voting      | <Badge><CheckIcon data-icon="inline-start" />Public</Badge>[^ee-docs][^ee-repo]                   | <Badge variant="ghost">Pending check</Badge>                                       | <Badge variant="outline"><MinusIcon data-icon="inline-start" />None found</Badge> | <Badge><CheckIcon data-icon="inline-start" />Stated</Badge>[^ee-repo]             |
+| **Brazil** voting machine | <Badge variant="secondary"><LockIcon data-icon="inline-start" />Accredited only</Badge>[^br-2026] | <Badge variant="ghost">Pending check</Badge>                                       | <Badge><CheckIcon data-icon="inline-start" />Public test</Badge>[^br-tps]         | <Badge><CheckIcon data-icon="inline-start" />Hashes</Badge>[^br-hash]             |
+| **USA** VotingWorks       | <Badge><CheckIcon data-icon="inline-start" />GPL-3.0</Badge>[^us-vx]                              | <Badge><CheckIcon data-icon="inline-start" />Federal</Badge>[^us-eac-vx]           | <Badge variant="outline"><MinusIcon data-icon="inline-start" />None found</Badge> | <Badge><CheckIcon data-icon="inline-start" />Hashes</Badge>[^us-eac-vx]           |
+| **Norway** 2011–14 trials | <Badge><CheckIcon data-icon="inline-start" />2011</Badge>[^no-nik]                                | <Badge><CheckIcon data-icon="inline-start" />Code audit</Badge>[^no-audit]         | <Badge variant="outline"><MinusIcon data-icon="inline-start" />None found</Badge> | <Badge variant="ghost">Pending check</Badge>                                      |
 
-<Badge variant="outline">Analysis</Badge> Two points apply to ECINet directly. First, publishing
-source code did not stop Norway or Switzerland from finding problems; it is how the problems were
-found.[^no-nik][^ch-post] Second, Brazil shows a middle path in which code is shown to accredited
-bodies and hashes are published for everyone.
+Published code is how Norway's and Switzerland's problems were found.[^no-nik][^ch-post] Norway ended its trials in 2014.[^no-end]
 
 </section>
 
 <section id="request">
 
-## The transparency request
+## The request
 
-Version 0.1, draft. Each ask maps to a row in the [ledger](#ledger). We ask the Election Commission of India to publish:
+We ask the Election Commission of India to publish seven things (draft v0.1).
 
-1. **Source code** of ECINet components that handle electoral-roll decisions and role permissions. If full publication is not possible, provide access for independent reviewers under published terms.
-2. **An architecture description** showing components, data flows, and where each statutory function is executed and recorded.
-3. **The role-permission matrix**: every role, including administrator and headquarters roles, and the actions each role can take.
-4. **The review committee's terms of reference, its members' affiliations, its method, and its report.**
-5. **A changelog** of releases that affect roles, permissions, or electoral-roll decisions, with dates.
-6. **Build verification**: hashes or signed build records that let an observer confirm which version is running.
-7. **A vulnerability disclosure policy**, so that researchers can report problems safely.
+<div className="not-prose grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+  <Card size="sm">
+    <CardHeader>
+      <CardTitle>1 · Source code</CardTitle>
+      <CardDescription>
+        Roll-decision and permission components, or reviewer access on published terms
+      </CardDescription>
+    </CardHeader>
+  </Card>
+  <Card size="sm">
+    <CardHeader>
+      <CardTitle>2 · Architecture</CardTitle>
+      <CardDescription>Where each statutory function runs and is recorded</CardDescription>
+    </CardHeader>
+  </Card>
+  <Card size="sm">
+    <CardHeader>
+      <CardTitle>3 · Role matrix</CardTitle>
+      <CardDescription>Every role, including headquarters, and what it can do</CardDescription>
+    </CardHeader>
+  </Card>
+  <Card size="sm">
+    <CardHeader>
+      <CardTitle>4 · Review report</CardTitle>
+      <CardDescription>Terms of reference, members, method, findings</CardDescription>
+    </CardHeader>
+  </Card>
+  <Card size="sm">
+    <CardHeader>
+      <CardTitle>5 · Changelog</CardTitle>
+      <CardDescription>Dated releases that touch roles or roll decisions</CardDescription>
+    </CardHeader>
+  </Card>
+  <Card size="sm">
+    <CardHeader>
+      <CardTitle>6 · Build proof</CardTitle>
+      <CardDescription>Hashes or signed records of what is running</CardDescription>
+    </CardHeader>
+  </Card>
+  <Card size="sm">
+    <CardHeader>
+      <CardTitle>7 · Disclosure policy</CardTitle>
+      <CardDescription>A safe way to report vulnerabilities</CardDescription>
+    </CardHeader>
+  </Card>
+</div>
 
-<Alert>
-  <AlertTitle>We are not asking for</AlertTitle>
-  <AlertDescription>
-    Voter data of any kind, credentials, cryptographic keys, infrastructure or network details, or
-    any other operational secret. None of the requests above requires them, and we will not publish
-    such material if we receive it.
-  </AlertDescription>
-</Alert>
-
-<Alert>
-  <AlertTitle>Right to Information application: planned</AlertTitle>
-  <AlertDescription>
-    We will file this request under the Right to Information Act, 2005. Once it is filed, this
-    notice will show the filing date, the public authority, and each response. The filer's personal
-    details will not be published.
-  </AlertDescription>
-</Alert>
+<div className="not-prose grid gap-3 lg:grid-cols-2">
+  <Alert>
+    <LockIcon />
+    <AlertTitle>We are not asking for</AlertTitle>
+    <AlertDescription>
+      Voter data, credentials, keys, infrastructure details, or any operational secret. We will not
+      publish them if received.
+    </AlertDescription>
+  </Alert>
+  <Alert>
+    <FileSearchIcon />
+    <AlertTitle>RTI application: planned</AlertTitle>
+    <AlertDescription>
+      Filing date, authority and responses will appear here. The filer's details will not.
+    </AlertDescription>
+  </Alert>
+</div>
 
 </section>
 
 <section id="method" data-tone="warm">
 
-## Method and corrections
+## Method
 
-**Sources.** We prefer primary documents: statutes, official notices, and statements from the bodies that operate each system. Press reports are used only where no primary document is available, and they are labelled as such. We cite sources by publisher, title and date without linking to them. Links and archived copies for every source are in the [public repository](https://github.com/akshatagarwl/openelections/blob/master/research).
-
-**Labels.** <Badge>Fact</Badge> means verifiable from a cited document. <Badge variant="secondary">Official claim</Badge> means something an authority says, which the public cannot yet check. <Badge variant="outline">Analysis</Badge> means our own reasoning. <Badge variant="ghost">Open question</Badge> means something that public evidence cannot yet answer.
-
-**Scope.** This page never requests or publishes voter data, credentials, keys, infrastructure details or other operational secrets.
-
-**Corrections.** Report errors through [GitHub issues](https://github.com/akshatagarwl/openelections/issues). Every correction is recorded below with its date and reason, and the repository history shows every change.
-
-| Date              | Change                           |
-| ----------------- | -------------------------------- |
-| 29 September 2026 | First draft published for review |
+<Accordion className="not-prose">
+  <AccordionItem value="sources">
+    <AccordionTrigger>How we source</AccordionTrigger>
+    <AccordionContent>
+      Primary documents first; press reports only when nothing primary exists, and labelled as such.
+      Sources are cited by name without links. Links and archives are in the [public
+      repository](https://github.com/akshatagarwl/openelections/blob/master/research/sources.md).
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="labels">
+    <AccordionTrigger>What the labels mean</AccordionTrigger>
+    <AccordionContent>
+      **Fact**: verifiable from a cited document. **Claim**: stated by an authority, not yet
+      checkable. **None found**: we searched and found nothing public. **Pending check**: not yet
+      verified against a primary source.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="scope">
+    <AccordionTrigger>What is out of scope</AccordionTrigger>
+    <AccordionContent>
+      We never request or publish voter data, credentials, keys, infrastructure details or other
+      operational secrets.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="corrections">
+    <AccordionTrigger>Corrections</AccordionTrigger>
+    <AccordionContent>
+      Report errors in [GitHub issues](https://github.com/akshatagarwl/openelections/issues). 29
+      September 2026: first draft published for review.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
 
 </section>
 
@@ -197,8 +464,6 @@ Version 0.1, draft. Each ask maps to a row in the [ledger](#ledger). We ask the 
 [^us-vx]: VotingWorks, VxSuite source repository README (votingworks/vxsuite), accessed 29 September 2026.
 
 [^us-eac-vx]: U.S. Election Assistance Commission, "VotingWorks VxSuite 4.0", certification record, 15 September 2026.
-
-[^eg-spec]: ElectionGuard, "Official specifications", versions 0.85 to 2.1, accessed 29 September 2026.
 
 [^no-nik]: Østvold et al., "Public review of e-voting source code: Lessons learnt from E-vote 2011", Norsk informatikkonferanse (NIK), 2012. An academic source.
 
