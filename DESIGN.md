@@ -123,6 +123,9 @@ Three rule-separated rows connect a current reported concern to a concrete audit
 ### Disclosure list
 Native details/summary rows contain five continuing disclosures supporting the standing publication policy: source, architecture, review coverage, change history and reproducible releases. The visible introduction makes future modules and updates explicit. One row opens at a time. An icon rotates to indicate expansion; the content also works without JavaScript.
 
+### Precedent materials
+Estonia and Switzerland remain the two headline examples. Country panels have prominent repository links; the IVXV quotation is explicitly attributed. A two-column ruled list exposes Swiss Post's architecture, protocol specification, proofs, build guide, changelog, reproducible-build process, hashes and supporting documentation. On mobile it becomes one column; links stay visible, not hidden inside disclosures. Explain the difference between published code, protocol proofs and deployment evidence.
+
 ### Sources
 Source entries are numbered, linked and publication-attributed. Targeted entries receive an inset tonal highlight. External links explicitly name their new-tab behavior for assistive technology.
 

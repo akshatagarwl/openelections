@@ -240,6 +240,69 @@ test("the demand is explicit, scoped, and reachable from the main action", async
   await expect(page.locator("#source-7")).toContainText("EDITORIAL OPINION");
 });
 
+test("international precedents link source and verification materials", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const precedents = page.locator("#precedents");
+  await expect(
+    precedents.getByRole("link", {
+      name: "Estonia’s IVXV source code",
+      exact: false,
+    }),
+  ).toHaveAttribute("href", "https://github.com/valimised/ivxv");
+  await expect(
+    precedents.getByRole("link", {
+      name: "Swiss Post’s e-voting source code",
+      exact: false,
+    }),
+  ).toHaveAttribute(
+    "href",
+    "https://gitlab.com/swisspost-evoting/e-voting/e-voting",
+  );
+  await expect(precedents.locator("blockquote")).toContainText(
+    "the code that can be found here is the code that is used for election.",
+  );
+  const artifacts = precedents.locator(".artifact-links a");
+  await expect(artifacts).toHaveCount(8);
+  const documentation =
+    "https://gitlab.com/swisspost-evoting/e-voting/e-voting-documentation";
+  const source = "https://gitlab.com/swisspost-evoting/e-voting/e-voting";
+  const links = [
+    [
+      "System architecture",
+      `${documentation}/-/blob/master/System/SwissPost_Voting_System_architecture_document.pdf`,
+    ],
+    [
+      "Detailed protocol specification",
+      `${documentation}/-/blob/master/System/System_Specification.pdf`,
+    ],
+    [
+      "Cryptographic proofs",
+      `${documentation}/-/blob/master/Protocol/Swiss_Post_Voting_Protocol_Computational_proof.pdf`,
+    ],
+    ["Build instructions", `${source}/-/blob/master/BUILDING.md`],
+    ["Changelog", `${source}/-/blob/master/CHANGELOG.md`],
+    [
+      "Reproducible-build process",
+      `${documentation}/-/blob/master/Trusted-Build/Trusted%20Build%20of%20the%20Swiss%20Post%20Voting%20System.md`,
+    ],
+    [
+      "Release hashes & signed protocols",
+      `${documentation}/-/tree/master/Trusted-Build/E-Voting`,
+    ],
+    ["Supporting documentation", documentation],
+  ];
+  for (const [name, url] of links) {
+    const link = precedents.getByRole("link", { name, exact: false });
+    await expect(link).toHaveAttribute("href", url);
+    await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+  }
+  await expect(precedents.locator(".verification-note")).toContainText(
+    "matching build hashes alone do not prove what runs in production",
+  );
+});
+
 test("the narrative and references remain available without JavaScript", async ({
   browser,
 }) => {
@@ -247,7 +310,7 @@ test("the narrative and references remain available without JavaScript", async (
   await page.goto("http://127.0.0.1:4173/");
   await expect(page.locator("h1")).toBeVisible();
   await expect(page.locator("#sources-title")).toHaveText("The evidence desk.");
-  await expect(page.locator(".source-list li")).toHaveCount(8);
+  await expect(page.locator(".source-list li")).toHaveCount(11);
   await page
     .locator("summary")
     .filter({ hasText: "Version & change history" })

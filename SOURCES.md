@@ -69,9 +69,41 @@ Research baseline: 29 September 2026. This is not a continuously monitored inven
 - This website has not independently obtained the underlying internal records or inspected the actual software. Every substantive use is visibly labelled as a reported concern, not our own verified technical finding.
 - Deliberately excluded from the site: election-outcome extrapolations, partisan blame, allegations about named individuals, and treating draft deletion totals as permanent disenfranchisement.
 
+## [9] Estonia's IVXV source repository
+
+- Publisher: `valimised`, the Estonian election authority's GitHub organisation.
+- Repository: https://github.com/valimised/ivxv
+- README fetched directly: https://raw.githubusercontent.com/valimised/ivxv/master/README.md
+- Verified passage: “the code that can be found here is the code that is used for election.”
+- The README says publication is for public review, the repository is not the active development workspace, and actual development of the legally binding i-voting system and verification app is supervised by the State Electoral Office.
+- The quote is explicitly attributed to the repository. We did not independently audit Estonia's deployed software.
+
+## [10] Swiss Post e-voting source repository
+
+- Repository: https://gitlab.com/swisspost-evoting/e-voting/e-voting
+- README fetched directly: https://gitlab.com/swisspost-evoting/e-voting/e-voting/-/raw/master/README.md
+- Build guide fetched directly: https://gitlab.com/swisspost-evoting/e-voting/e-voting/-/raw/master/BUILDING.md
+- Changelog: https://gitlab.com/swisspost-evoting/e-voting/e-voting/-/blob/master/CHANGELOG.md
+- The README links system architecture, detailed specification, cryptographic proofs and an infrastructure whitepaper. It expressly states that reproducible builds let researchers verify the source-to-binary path and that hashes of a Linux-based build are published.
+- We link the repository as published source without making a separate claim about the legal classification of its licence.
+
+## [11] Swiss Post specifications, proofs and trusted-build evidence
+
+- Documentation repository: https://gitlab.com/swisspost-evoting/e-voting/e-voting-documentation
+- The System README, Protocol README, Trusted-Build README and the complete trusted-build/deployment process were fetched directly and read. File names below were also checked using the public GitLab repository-tree API.
+- Architecture: `System/SwissPost_Voting_System_architecture_document.pdf`
+- Detailed protocol specification: `System/System_Specification.pdf`
+- Cryptographic proofs: `Protocol/Swiss_Post_Voting_Protocol_Computational_proof.pdf`
+- Reproducible-build and deployment process: `Trusted-Build/Trusted Build of the Swiss Post Voting System.md`
+- Release hashes and signed protocols: `Trusted-Build/E-Voting`
+- The System README distinguishes the detailed protocol specification from the computational proof and architecture. The proof README states assumptions and limitations.
+- The Trusted-Build README says the E-Voting directory contains per-release hash values and trusted-build/deployment protocols. The process document describes independent rebuilding, signed hash records and a separately witnessed deployment ceremony.
+- These are linked materials and the publisher's described process, not this site's independent confirmation that a particular deployment followed it. Matching hashes alone do not establish the live deployment; cryptographic proofs are conditional on their assumptions.
+- Repository links follow current default/master branches. Pin a release/commit before attempting to reproduce a specific historical build.
+
 ## Retrieval and uncertainty
 
-PIB returned HTTP 403 to direct automated fetches in this session. Its releases were checked through search-indexed passages from the primary PIB URLs. The Estonia and Switzerland pages were directly fetched and inspected. Publication wording and dates should be rechecked against the originals before future publication or reliance. The site's methodology discloses this limitation.
+PIB returned HTTP 403 to direct automated fetches in this session. Its releases were checked through search-indexed passages from the primary PIB URLs. The Estonia and Switzerland pages, IVXV README, Swiss Post source README, build guide, documentation indexes and trusted-build process were directly fetched and inspected. We did not compile the systems, independently validate the cryptographic proofs, or audit deployed binaries. Publication wording and dates should be rechecked against the originals before future publication or reliance. The site's methodology discloses this limitation.
 
 The public-artifact statement is narrowly worded: the reviewed material did not establish a publicly available source repository, architecture, audit report or reproducible-build package. It is not an exhaustive search of all ECI publications, a definitive assertion that nothing has been published, or evidence of wrongdoing. Amend this statement if new primary documentation is identified.
 

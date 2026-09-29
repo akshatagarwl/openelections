@@ -555,6 +555,31 @@
               describes independent auditing.
               <a class="citation" href="#source-4" aria-label="Source 4">[4]</a>
             </p>
+            <blockquote class="repository-quote">
+              <p>
+                “the code that can be found here is the code that is used for
+                election.”
+              </p>
+              <cite
+                >Estonian IVXV repository README
+                <a class="citation" href="#source-9" aria-label="Source 9"
+                  >[9]</a
+                ></cite
+              >
+            </blockquote>
+            <a
+              class="repo-link"
+              href="https://github.com/valimised/ivxv"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i data-lucide="github"></i
+              ><span
+                >Estonia’s IVXV source code<small
+                  >github.com/valimised/ivxv</small
+                ></span
+              ><i data-lucide="arrow-up-right"></i
+              ><span class="sr-only"> (opens in a new tab)</span></a
+            >
             <a
               class="text-link"
               href="https://www.valimised.ee/en/internet-voting/frequently-asked-questions/questions-about-reliability-i-voting"
@@ -577,13 +602,34 @@
               </div>
               <span>SWITZERLAND</span>
             </div>
-            <h3>Publish the code.<br />Publish the examinations.</h3>
+            <h3>Publish the code.<br />And the path to verifying it.</h3>
             <p>
-              The Federal Chancellery sets out source and documentation
-              disclosure, independent examinations and public scrutiny, and
-              publishes examination reports.
-              <a class="citation" href="#source-5" aria-label="Source 5">[5]</a>
+              Swiss Post publishes source with architecture, specifications,
+              cryptographic proofs and build guidance. Its repository explicitly
+              describes reproducible builds.
+              <a class="citation" href="#source-10" aria-label="Source 10"
+                >[10]</a
+              >
             </p>
+            <p class="country-context">
+              The Federal Chancellery separately publishes independent
+              examination reports.
+              <a class="citation" href="#source-5" aria-label="Source 5">[5]</a>
+              Code publication and expert review work together.
+            </p>
+            <a
+              class="repo-link"
+              href="https://gitlab.com/swisspost-evoting/e-voting/e-voting"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i data-lucide="code-xml"></i
+              ><span
+                >Swiss Post’s e-voting source code<small
+                  >gitlab.com/swisspost-evoting</small
+                ></span
+              ><i data-lucide="arrow-up-right"></i
+              ><span class="sr-only"> (opens in a new tab)</span></a
+            >
             <a
               class="text-link"
               href="https://www.bk.admin.ch/en/examination-of-systems"
@@ -594,6 +640,142 @@
               ><span class="sr-only"> (opens in a new tab)</span></a
             >
           </article>
+        </div>
+        <div class="swiss-materials" aria-labelledby="swiss-materials-title">
+          <div class="materials-heading">
+            <h3 id="swiss-materials-title">
+              Swiss Post publishes more than code.
+            </h3>
+            <p>
+              Open the actual materials. Its Trusted Build documentation also
+              links release hashes and signed build/deployment protocols.
+              <a class="citation" href="#source-11" aria-label="Source 11"
+                >[11]</a
+              >
+            </p>
+          </div>
+          <ul class="artifact-links">
+            <li>
+              <a
+                href="https://gitlab.com/swisspost-evoting/e-voting/e-voting-documentation/-/blob/master/System/SwissPost_Voting_System_architecture_document.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span
+                  >System architecture<small
+                    >Components, boundaries and design</small
+                  ></span
+                ><span class="artifact-format">PDF</span
+                ><i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://gitlab.com/swisspost-evoting/e-voting/e-voting-documentation/-/blob/master/System/System_Specification.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span
+                  >Detailed protocol specification<small
+                    >Algorithms and protocol steps</small
+                  ></span
+                ><span class="artifact-format">PDF</span
+                ><i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://gitlab.com/swisspost-evoting/e-voting/e-voting-documentation/-/blob/master/Protocol/Swiss_Post_Voting_Protocol_Computational_proof.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span
+                  >Cryptographic proofs<small
+                    >Verifiability and privacy, with assumptions</small
+                  ></span
+                ><span class="artifact-format">PDF</span
+                ><i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://gitlab.com/swisspost-evoting/e-voting/e-voting/-/blob/master/BUILDING.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span
+                  >Build instructions<small
+                    >Tools, dependencies and build steps</small
+                  ></span
+                ><i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://gitlab.com/swisspost-evoting/e-voting/e-voting/-/blob/master/CHANGELOG.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span
+                  >Changelog<small
+                    >Changes across published releases</small
+                  ></span
+                ><i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://gitlab.com/swisspost-evoting/e-voting/e-voting-documentation/-/blob/master/Trusted-Build/Trusted%20Build%20of%20the%20Swiss%20Post%20Voting%20System.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span
+                  >Reproducible-build process<small
+                    >How source, artifacts and deployment connect</small
+                  ></span
+                ><i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://gitlab.com/swisspost-evoting/e-voting/e-voting-documentation/-/tree/master/Trusted-Build/E-Voting"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span
+                  >Release hashes & signed protocols<small
+                    >Compare independently rebuilt artifacts</small
+                  ></span
+                ><i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://gitlab.com/swisspost-evoting/e-voting/e-voting-documentation"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span
+                  >Supporting documentation<small
+                    >Operations, testing and security material</small
+                  ></span
+                ><i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+            </li>
+          </ul>
+          <p class="verification-note">
+            <strong
+              >Source → specification → reproducible build → deployment
+              evidence.</strong
+            >
+            Researchers can examine more than a review’s conclusion.
+            Cryptographic proofs have stated assumptions; matching build hashes
+            alone do not prove what runs in production.
+            <a class="citation" href="#source-10" aria-label="Source 10">[10]</a
+            ><a class="citation" href="#source-11" aria-label="Source 11"
+              >[11]</a
+            >
+          </p>
         </div>
         <p class="precedent-caveat">
           <i data-lucide="corner-down-right"></i>These examples concern internet
@@ -941,6 +1123,68 @@
               </p>
             </div>
           </li>
+          <li id="source-9">
+            <span class="source-number">[9]</span>
+            <div>
+              <span class="source-publisher"
+                >ESTONIAN STATE ELECTORAL OFFICE · IVXV REPOSITORY</span
+              ><a
+                href="https://github.com/valimised/ivxv"
+                target="_blank"
+                rel="noopener noreferrer"
+                >IVXV online voting system — source and README
+                <i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+              <p>
+                The repository states that it publishes code for public review
+                and that the code is used for elections, with development
+                supervised by the State Electoral Office. This is an attributed
+                repository statement, not our own deployment audit.
+              </p>
+            </div>
+          </li>
+          <li id="source-10">
+            <span class="source-number">[10]</span>
+            <div>
+              <span class="source-publisher"
+                >SWISS POST · E-VOTING SOURCE REPOSITORY</span
+              ><a
+                href="https://gitlab.com/swisspost-evoting/e-voting/e-voting"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Swiss Post Voting System — source, build guide and changelog
+                <i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+              <p>
+                The README links architecture, detailed specifications and
+                cryptographic proofs, describes reproducible builds, and states
+                that Linux-build hashes are published.
+              </p>
+            </div>
+          </li>
+          <li id="source-11">
+            <span class="source-number">[11]</span>
+            <div>
+              <span class="source-publisher"
+                >SWISS POST · SYSTEM DOCUMENTATION & TRUSTED BUILD</span
+              ><a
+                href="https://gitlab.com/swisspost-evoting/e-voting/e-voting-documentation/-/tree/master/Trusted-Build"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Trusted Build and Trusted Deployment documentation
+                <i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+              <p>
+                Describes independent rebuilds, hash comparisons and signed
+                deployment evidence. The index links per-release hashes and
+                build/deployment protocols; separate System and Protocol
+                directories contain specifications and proofs.
+              </p>
+            </div>
+          </li>
         </ol>
         <details class="methodology">
           <summary>
@@ -964,9 +1208,11 @@
               internal documents or an independent examination of the software.
               PIB blocked direct automated retrieval during preparation; those
               releases were checked through search-indexed primary-source
-              passages. The Estonian and Swiss pages were retrieved directly.
-              Recheck the linked originals before relying on time-sensitive
-              details.
+              passages. The Estonian and Swiss pages and linked repository
+              documentation were retrieved directly. We have not independently
+              rebuilt these systems, verified the cryptographic proofs or
+              audited their deployed binaries. Recheck the linked originals
+              before relying on time-sensitive details.
             </p>
             <p>
               This website is independent and is not affiliated with the
