@@ -1,0 +1,14 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+.impeccable/review/
+.impeccable/questions/
+.impeccable/confirmation.json
+.impeccable/directions.json
+.impeccable/contract.md
+.impeccable/config.local.json
+.DS_Store
+.env
+.env.*
+!.env.example

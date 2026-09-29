@@ -1,0 +1,986 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#eeeee7" />
+    <meta
+      name="description"
+      content="A demand to open-source the ECINet and ERONet components that validate voter applications, control official access and restore voters. Public code, repeatable audits, protected personal data."
+    />
+    <meta
+      property="og:title"
+      content="Make source code of ECINet/ERONet public — OpenElections.in"
+    />
+    <meta
+      property="og:description"
+      content="Three reported concerns. Three parts of the electoral-roll software to open. An IIT/IIIT review should complement, not replace, public scrutiny."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://openelections.in/" />
+    <meta property="og:site_name" content="OpenElections.in" />
+    <meta property="og:image" content="https://openelections.in/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta
+      property="og:image:alt"
+      content="Make source code of ECINet/ERONet public. OpenElections.in — public scrutiny of electoral-roll software."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Make source code of ECINet/ERONet public"
+    />
+    <meta
+      name="twitter:description"
+      content="A nonpartisan demand for public scrutiny of electoral-roll software. Publish the relevant code. Protect people’s data."
+    />
+    <meta name="twitter:image" content="https://openelections.in/og.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Make source code of ECINet/ERONet public. OpenElections.in."
+    />
+    <link rel="canonical" href="https://openelections.in/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Make source code of ECINet/ERONet public — OpenElections.in</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a href="#" class="wordmark" aria-label="OpenElections.in home"
+        ><span class="brand-symbol" aria-hidden="true"
+          ><span></span><span></span><span></span></span
+        >open<span class="wordmark-bold">elections</span
+        ><span class="domain">.in</span></a
+      >
+      <span class="header-purpose">A demand for open electoral-roll code</span>
+      <nav aria-label="Main navigation">
+        <a href="#sources">The sources <i data-lucide="arrow-up-right"></i></a
+        ><a class="header-cta" href="#checklist"
+          >Read the demand <i data-lucide="arrow-down-right"></i
+        ></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title">
+            Make source code<br />of ECINet/ERONet<br /><span>public.</span>
+          </h1>
+          <p class="hero-deck">
+            We demand that ECI open-source the parts of ECINet/ERONet that
+            validate voter applications, control official access and restore
+            voters.
+          </p>
+          <p class="hero-summary">
+            ECI’s announced IIT/IIIT-assisted review is a start—not a substitute
+            for public scrutiny.
+            <a class="citation" href="#source-3" aria-label="Source 3">[3]</a>
+            Publish the relevant code. Protect people’s data.
+          </p>
+          <a class="primary-link" href="#checklist"
+            >Read the demand <span><i data-lucide="arrow-down"></i></span
+          ></a>
+          <div class="hero-meta">
+            <span><i data-lucide="clock-3"></i> A 6-minute exploration</span
+            ><span>Evidence, not allegations</span>
+          </div>
+        </div>
+        <div
+          class="system-exhibit"
+          aria-label="Explore the electoral-roll code and audit evidence we seek"
+        >
+          <div class="exhibit-topline">
+            <span
+              ><span class="small-cross">+</span> THE CODE THAT NEEDS
+              SCRUTINY</span
+            ><button
+              id="motion-toggle"
+              class="motion-toggle"
+              aria-label="Pause diagram animation"
+              aria-pressed="false"
+            >
+              <i data-lucide="pause"></i>
+            </button>
+          </div>
+          <div class="network">
+            <svg
+              class="network-lines"
+              viewBox="0 0 560 390"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle class="orbit" cx="280" cy="195" r="104" />
+              <circle class="orbit orbit-outer" cx="280" cy="195" r="162" />
+              <path
+                class="network-route"
+                d="M280 195H111V75M280 195H449V75M280 195H72M280 195H488M280 195H111V315M280 195H449V315"
+              />
+              <path
+                class="network-flow"
+                d="M111 75V195H449V315M449 75V195H111V315"
+              />
+              <path
+                class="diagram-ticks"
+                d="M280 22V35M280 355V368M107 195H120M440 195H453"
+              />
+              <circle class="hub-boundary" cx="280" cy="195" r="62" />
+            </svg>
+            <div class="network-hub">
+              <div class="hub-mark" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <strong>ECINet</strong><span>ELECTORAL ROLLS</span>
+            </div>
+            <button
+              class="workflow-node node-rolls is-selected"
+              data-workflow="validation"
+              aria-pressed="true"
+            >
+              <i data-lucide="list-checks"></i><span>Form 6 checks</span>
+            </button>
+            <button
+              class="workflow-node node-voters"
+              data-workflow="permissions"
+              aria-pressed="false"
+            >
+              <i data-lucide="users-round"></i><span>Officer permissions</span>
+            </button>
+            <button
+              class="workflow-node node-candidates"
+              data-workflow="restoration"
+              aria-pressed="false"
+            >
+              <i data-lucide="contact-round"></i><span>Voter restoration</span>
+            </button>
+            <button
+              class="workflow-node node-officials"
+              data-workflow="audit"
+              aria-pressed="false"
+            >
+              <i data-lucide="network"></i><span>Audit trails</span>
+            </button>
+            <button
+              class="workflow-node node-turnout"
+              data-workflow="history"
+              aria-pressed="false"
+            >
+              <i data-lucide="chart-no-axes-column-increasing"></i
+              ><span>Change history</span>
+            </button>
+            <button
+              class="workflow-node node-results"
+              data-workflow="builds"
+              aria-pressed="false"
+            >
+              <i data-lucide="file-chart-column-increasing"></i
+              ><span>Build inputs</span>
+            </button>
+          </div>
+          <div class="network-detail" aria-live="polite" aria-atomic="true">
+            <span class="detail-index" id="workflow-index">01 / 06</span>
+            <p id="workflow-detail">
+              Reported concern: an added SIR-linked family question blocked
+              applicants from proceeding without an answer.
+              <a href="#source-8" class="citation" aria-label="Source 8">[8]</a>
+            </p>
+          </div>
+          <div class="exhibit-bottomline">
+            <span>SELECT A PART TO EXAMINE</span
+            ><span>Scope of our demand · not disclosed architecture</span>
+          </div>
+        </div>
+      </section>
+
+      <nav class="chapter-nav" aria-label="Explore the story">
+        <div class="reading-progress" aria-hidden="true"></div>
+        <a href="#platform" class="chapter-link"
+          ><span>01</span> The disputed code</a
+        ><a href="#authority" class="chapter-link"
+          ><span>02</span> The distinction</a
+        ><a href="#review" class="chapter-link"
+          ><span>03</span> The scrutiny gap</a
+        ><a href="#precedents" class="chapter-link"
+          ><span>04</span> The precedents</a
+        ><a href="#checklist" class="chapter-link"
+          ><span>05</span> Our demand <i data-lucide="arrow-down-right"></i
+        ></a>
+      </nav>
+
+      <section
+        id="platform"
+        class="chapter platform-section"
+        aria-labelledby="platform-title"
+      >
+        <div class="section-heading">
+          <span class="chapter-number">01 / THE DISPUTED CODE</span>
+          <h2 id="platform-title">
+            Three questions.<br />Three parts to open.
+          </h2>
+          <p>
+            ECINet integrates more than 40 apps and portals. Our demand is
+            targeted: open the electoral-roll logic at the centre of the
+            reported concerns, with enough supporting code to audit it.
+            <a class="citation" href="#source-1" aria-label="Source 1">[1]</a
+            ><a class="citation" href="#source-2" aria-label="Source 2">[2]</a>
+          </p>
+        </div>
+        <div class="concern-ledger">
+          <article class="concern-row">
+            <div class="concern-question">
+              <i data-lucide="list-checks"></i>
+              <h3>Can a form add<br />a new condition?</h3>
+              <span>APPLICATION VALIDATION</span>
+            </div>
+            <div class="concern-evidence">
+              <h4>Reported concern</h4>
+              <p>
+                The Indian Express reported that the online Form 6 required an
+                answer to an added SIR-linked family question before an
+                applicant could proceed.
+                <a class="citation" href="#source-8" aria-label="Source 8"
+                  >[8]</a
+                >
+              </p>
+            </div>
+            <div class="concern-demand">
+              <h4>Code to open</h4>
+              <p>
+                Field definitions, mandatory checks and the rules that accept or
+                block an application.
+              </p>
+              <p class="audit-test">
+                <strong>The test</strong> Does each mandatory check have an
+                identified legal basis?
+              </p>
+            </div>
+          </article>
+          <article class="concern-row">
+            <div class="concern-question">
+              <i data-lucide="user-round-check"></i>
+              <h3>Who can change<br />the electoral roll?</h3>
+              <span>PERMISSIONS & OVERRIDES</span>
+            </div>
+            <div class="concern-evidence">
+              <h4>Reported concern</h4>
+              <p>
+                The investigation describes Commissioners questioning
+                centralised database access and reporting that field authorities
+                lacked “proper and complete access”.
+                <a class="citation" href="#source-8" aria-label="Source 8"
+                  >[8]</a
+                >
+              </p>
+            </div>
+            <div class="concern-demand">
+              <h4>Code to open</h4>
+              <p>
+                Role permissions, privileged operations, override rules and the
+                audit trail for changes.
+              </p>
+              <p class="audit-test">
+                <strong>The test</strong> Can only authorised roles act, and can
+                their actions be traced?
+              </p>
+            </div>
+          </article>
+          <article class="concern-row">
+            <div class="concern-question">
+              <i data-lucide="git-pull-request"></i>
+              <h3>Can a lawful decision<br />be carried out?</h3>
+              <span>VOTER RESTORATION</span>
+            </div>
+            <div class="concern-evidence">
+              <h4>Reported concern</h4>
+              <p>
+                The paper reported that 97 people found eligible by Goa’s EROs
+                were left off the final roll after a requested restoration
+                facility was not enabled in time.
+                <a class="citation" href="#source-8" aria-label="Source 8"
+                  >[8]</a
+                >
+              </p>
+            </div>
+            <div class="concern-demand">
+              <h4>Code to open</h4>
+              <p>
+                Restoration state transitions, deadlines, feature controls and
+                error-handling paths.
+              </p>
+              <p class="audit-test">
+                <strong>The test</strong> Can an authorised officer execute a
+                valid restoration decision?
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="response-note">
+          <div>
+            <h3>ECI’s stated response</h3>
+            <p>
+              Field access follows statutory powers; a review will check
+              compliance, and additional flexibility will be enabled if needed.
+              <a class="citation" href="#source-3" aria-label="Source 3">[3]</a>
+            </p>
+          </div>
+          <div>
+            <h3>What still needs evidence</h3>
+            <p>
+              The follow-up explainer says ECI’s note did not resolve the online
+              Form 6 question or explain why Goa’s restoration facility was not
+              enabled.
+              <a class="citation" href="#source-6" aria-label="Source 6">[6]</a>
+            </p>
+          </div>
+        </div>
+        <div class="scope-note">
+          <i data-lucide="info"></i>
+          <p>
+            <strong>Evidence boundary:</strong> these are attributed reports,
+            not findings from our own inspection of ECINet or the internal
+            notes. We make no claim about EVM vote recording. ECI says statutory
+            forms prevail over conflicting digital data.
+            <a class="citation" href="#source-1" aria-label="Source 1">[1]</a>
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="authority"
+        class="chapter authority-section"
+        aria-labelledby="authority-title"
+      >
+        <div class="authority-intro">
+          <span class="chapter-number">02 / THE DISTINCTION</span>
+          <h2 id="authority-title">Authority is legal.<br />Access is code.</h2>
+          <p>
+            ECI says field officers’ access is role-based and aligned with their
+            statutory powers.
+            <a class="citation" href="#source-3" aria-label="Source 3">[3]</a>
+          </p>
+          <p>
+            That is a claim about the software. To test it independently, we
+            need to see how the software implements it.
+          </p>
+          <div
+            class="view-toggle"
+            role="group"
+            aria-label="Diagram perspective"
+          >
+            <button data-view="authority" aria-pressed="true">
+              Statutory authority</button
+            ><button data-view="software" aria-pressed="false">
+              Software implementation
+            </button>
+          </div>
+          <p class="interaction-hint">
+            <i data-lucide="mouse-pointer-2"></i> Switch views. Same officials.
+            A different question.
+          </p>
+        </div>
+        <div class="authority-figure" data-perspective="authority">
+          <div class="figure-heading">
+            <span id="perspective-label">THE LEGAL LAYER</span
+            ><span id="perspective-status"
+              >ECI’S STATED POSITION
+              <a class="citation" href="#source-3" aria-label="Source 3"
+                >[3]</a
+              ></span
+            >
+          </div>
+          <div class="authority-map">
+            <div class="authority-actors">
+              <div>
+                <i data-lucide="landmark"></i><strong>State CEO</strong
+                ><span>Chief Electoral Officer</span>
+              </div>
+              <div>
+                <i data-lucide="building-2"></i><strong>District DEO</strong
+                ><span>District Election Officer</span>
+              </div>
+              <div>
+                <i data-lucide="user-round-check"></i><strong>Local ERO</strong
+                ><span>Electoral Registration Officer</span>
+              </div>
+            </div>
+            <svg
+              viewBox="0 0 540 95"
+              class="authority-connections"
+              aria-hidden="true"
+            >
+              <path d="M90 0V40H270V95M270 0V95M450 0V40H270" />
+            </svg>
+            <div class="implementation-box">
+              <i data-lucide="code-xml"></i>
+              <div>
+                <strong id="implementation-title"
+                  >Powers remain with designated officers</strong
+                ><span id="implementation-subtitle"
+                  >Software should reflect—not redefine—the law.</span
+                >
+              </div>
+              <i id="implementation-icon" data-lucide="check"></i>
+            </div>
+          </div>
+          <div class="figure-caption" aria-live="polite">
+            <span class="caption-symbol" aria-hidden="true"
+              ><i data-lucide="corner-down-right"></i
+            ></span>
+            <p id="authority-caption">
+              A unified platform does not, by itself, transfer statutory
+              authority. The question is whether its permissions preserve that
+              authority in practice.
+            </p>
+          </div>
+          <span class="figure-disclaimer"
+            >Illustrative roles and relationships, not a disclosed ECINet
+            architecture.</span
+          >
+        </div>
+      </section>
+
+      <section
+        id="review"
+        class="chapter review-section"
+        aria-labelledby="review-title"
+      >
+        <span class="chapter-number">03 / THE SCRUTINY GAP</span>
+        <h2 id="review-title">
+          Independent audit <span class="not-equal">≠</span><br />public
+          verification.
+        </h2>
+        <div class="review-intro">
+          <p>
+            Expertise is not the issue.<br />Who can scrutinise the code is.
+          </p>
+          <p>
+            On 26 September 2026, ECI announced a commission-led review
+            including an independent IIT/IIIT expert, reporting to the
+            Commission. That announcement is not a published audit result.
+            <a class="citation" href="#source-3" aria-label="Source 3">[3]</a>
+          </p>
+        </div>
+        <div class="comparison">
+          <div class="comparison-column">
+            <div class="comparison-label">
+              <i data-lucide="scan-search"></i>
+              <h3>A commissioned review</h3>
+            </div>
+            <p class="comparison-question">
+              “What did the selected<br />reviewers find?”
+            </p>
+            <ul>
+              <li>A defined group of reviewers</li>
+              <li>A compliance review within a defined remit</li>
+              <li>Findings submitted to the commissioning body</li>
+            </ul>
+            <span class="comparison-footnote"
+              >The announced ECINet process
+              <a class="citation" href="#source-3" aria-label="Source 3"
+                >[3]</a
+              ></span
+            >
+          </div>
+          <div class="comparison-column public-column">
+            <div class="comparison-label">
+              <i data-lucide="git-pull-request"></i>
+              <h3>Public verification</h3>
+            </div>
+            <p class="comparison-question">
+              “Can others test<br />the same claims?”
+            </p>
+            <ul>
+              <li>Source and architecture anyone can inspect</li>
+              <li>Published methods, findings and fixes</li>
+              <li>Evidence linked to each software release</li>
+            </ul>
+            <span class="comparison-footnote"
+              >The public scrutiny we demand</span
+            >
+          </div>
+        </div>
+        <div class="evidence-boundary">
+          <span class="boundary-label"
+            ><span class="status-dot"></span> WHAT WE CAN SAY</span
+          >
+          <p>
+            We could not establish a public source repository, architecture,
+            review report or reproducible-build package from the cited ECI
+            material. This is a bounded research finding, not an exhaustive
+            claim of absence.
+            <strong
+              >This is a limit on public verification—not evidence of
+              manipulation.</strong
+            >
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="precedents"
+        class="chapter precedents-section"
+        aria-labelledby="precedents-title"
+      >
+        <div class="section-heading">
+          <span class="chapter-number">04 / THE PRECEDENTS</span>
+          <h2 id="precedents-title">
+            Public scrutiny<br />is already a practice.
+          </h2>
+          <p>
+            Other election systems combine expert review with public disclosure.
+            The useful comparison is their transparency practice—not a claim
+            that the systems are identical.
+          </p>
+        </div>
+        <div class="country-grid">
+          <article class="country">
+            <div class="country-top">
+              <span class="country-code">EE</span>
+              <div
+                class="country-flag estonia-flag"
+                role="img"
+                aria-label="Estonian flag"
+              >
+                <span></span><span></span><span></span>
+              </div>
+              <span>ESTONIA</span>
+            </div>
+            <h3>Let people inspect<br />the source.</h3>
+            <p>
+              Estonia’s election authority says its internet-voting software
+              source has been public for examination since July 2013. It also
+              describes independent auditing.
+              <a class="citation" href="#source-4" aria-label="Source 4">[4]</a>
+            </p>
+            <a
+              class="text-link"
+              href="https://www.valimised.ee/en/internet-voting/frequently-asked-questions/questions-about-reliability-i-voting"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Read the election authority’s explanation
+              <i data-lucide="arrow-up-right"></i
+              ><span class="sr-only"> (opens in a new tab)</span></a
+            >
+          </article>
+          <article class="country">
+            <div class="country-top">
+              <span class="country-code">CH</span>
+              <div
+                class="country-flag swiss-flag"
+                role="img"
+                aria-label="Swiss flag"
+              >
+                <span></span>
+              </div>
+              <span>SWITZERLAND</span>
+            </div>
+            <h3>Publish the code.<br />Publish the examinations.</h3>
+            <p>
+              The Federal Chancellery sets out source and documentation
+              disclosure, independent examinations and public scrutiny, and
+              publishes examination reports.
+              <a class="citation" href="#source-5" aria-label="Source 5">[5]</a>
+            </p>
+            <a
+              class="text-link"
+              href="https://www.bk.admin.ch/en/examination-of-systems"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Explore the examination framework
+              <i data-lucide="arrow-up-right"></i
+              ><span class="sr-only"> (opens in a new tab)</span></a
+            >
+          </article>
+        </div>
+        <p class="precedent-caveat">
+          <i data-lucide="corner-down-right"></i>These examples concern internet
+          voting. ECINet is an election-services platform. This is not a
+          proposal to introduce internet voting in India.
+        </p>
+      </section>
+
+      <section class="privacy-section" aria-labelledby="privacy-title">
+        <div>
+          <h2 id="privacy-title">Public code.<br />Protected data.</h2>
+          <p>
+            Our demand concerns the code that implements public powers—not
+            personal records or security credentials. Publish the relevant logic
+            without exposing people or live systems.
+          </p>
+        </div>
+        <div class="disclosure-columns">
+          <div>
+            <h3><i data-lucide="folder-open"></i> Make public</h3>
+            <ul>
+              <li>Code implementing election rules and powers</li>
+              <li>Architecture and role-permission rules</li>
+              <li>Audit methods, findings and fixes</li>
+              <li>Release history and build instructions</li>
+            </ul>
+          </div>
+          <div>
+            <h3><i data-lucide="lock-keyhole"></i> Keep protected</h3>
+            <ul>
+              <li>Personal voter and staff data</li>
+              <li>Passwords and private keys</li>
+              <li>Live operational credentials</li>
+              <li>Exploitable details pending a safe fix</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="checklist"
+        class="chapter checklist-section"
+        aria-labelledby="checklist-title"
+      >
+        <div class="checklist-intro">
+          <span class="chapter-number">05 / OUR DEMAND</span>
+          <h2 id="checklist-title">
+            Open-source the<br />electoral-roll logic.
+          </h2>
+          <p>
+            ECI should release the application-validation, role-permission and
+            voter-restoration components, with the supporting code and evidence
+            needed to audit them independently.
+          </p>
+          <p class="checklist-caption">
+            Source availability is the starting point. An open-source licence
+            must also let others run, modify and share the released code. This
+            demand is scoped to the relevant components—not voter data,
+            credentials or public access to live systems.
+          </p>
+          <button id="copy-checklist" class="copy-button">
+            <i data-lucide="copy"></i> Copy the demand</button
+          ><span id="copy-status" class="copy-status" role="status"></span>
+        </div>
+        <div class="checklist-items">
+          <details name="checklist" open>
+            <summary>
+              <span class="checklist-number">01</span><span>Source code</span
+              ><i data-lucide="plus"></i>
+            </summary>
+            <div class="checklist-body">
+              <p>
+                Publish the relevant validation, permissions and restoration
+                code—including overrides, audit-trail logic and required
+                dependencies—under an open-source licence. Let anyone inspect,
+                run, modify and redistribute it, and publish their findings.
+                Provide synthetic test data, not real voter records.
+              </p>
+              <span class="test-question"
+                >The test: What rules does the software actually enforce?</span
+              >
+            </div>
+          </details>
+          <details name="checklist">
+            <summary>
+              <span class="checklist-number">02</span
+              ><span>Architecture & permissions</span><i data-lucide="plus"></i>
+            </summary>
+            <div class="checklist-body">
+              <p>
+                Document data flows, trust boundaries, role-permission mappings,
+                overrides and appeal workflows. Explain which statutory power
+                each operation implements.
+              </p>
+              <span class="test-question"
+                >The test: Who can do what—and who can override it?</span
+              >
+            </div>
+          </details>
+          <details name="checklist">
+            <summary>
+              <span class="checklist-number">03</span
+              ><span>Audit reports & remediation</span
+              ><i data-lucide="plus"></i>
+            </summary>
+            <div class="checklist-body">
+              <p>
+                Publish the scope, methods, versions examined, findings and
+                status of fixes. Redact personal data and coordinate disclosure
+                of exploitable vulnerabilities.
+              </p>
+              <span class="test-question"
+                >The test: What was examined, what was found, and what
+                changed?</span
+              >
+            </div>
+          </details>
+          <details name="checklist">
+            <summary>
+              <span class="checklist-number">04</span
+              ><span>Version & change history</span><i data-lucide="plus"></i>
+            </summary>
+            <div class="checklist-body">
+              <p>
+                Provide tagged releases, meaningful change logs and dated
+                deployment records. Make changes to election rules and
+                permissions traceable.
+              </p>
+              <span class="test-question"
+                >The test: Which rules were running, and when?</span
+              >
+            </div>
+          </details>
+          <details name="checklist">
+            <summary>
+              <span class="checklist-number">05</span
+              ><span>Reproducible builds</span><i data-lucide="plus"></i>
+            </summary>
+            <div class="checklist-body">
+              <p>
+                Publish pinned build inputs, instructions and signed release
+                hashes so others can rebuild the same artifact. Deployment
+                attestations are still needed to connect that artifact to the
+                running service.
+              </p>
+              <span class="test-question"
+                >The test: Does the reviewed source match the released
+                software?</span
+              >
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="closing" aria-labelledby="closing-title">
+        <div class="closing-mark" aria-hidden="true">
+          <i data-lucide="code-xml"></i>
+        </div>
+        <h2 id="closing-title">
+          Public powers.<br />Publicly inspectable code.
+        </h2>
+        <p>
+          ECI should open-source the relevant electoral-roll components.<br />
+          Expert review and repeatable public audits should work together.
+        </p>
+        <a href="#checklist" class="text-link"
+          >Read and share the demand. <i data-lucide="arrow-down-right"></i
+        ></a>
+      </section>
+
+      <section
+        id="sources"
+        class="sources-section"
+        aria-labelledby="sources-title"
+      >
+        <div class="sources-heading">
+          <h2 id="sources-title">The evidence desk.</h2>
+          <p>
+            Official documents, attributed reporting and clearly labelled
+            opinion.
+          </p>
+          <span>Research checked 29 September 2026</span>
+        </div>
+        <ol class="source-list">
+          <li id="source-1">
+            <span class="source-number">[1]</span>
+            <div>
+              <span class="source-publisher"
+                >ELECTION COMMISSION OF INDIA · PIB · 4 MAY 2025</span
+              ><a
+                href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2126682"
+                target="_blank"
+                rel="noopener noreferrer"
+                >ECI to soon launch a single-point App for stakeholders
+                <i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+              <p>
+                40+ apps, integrated services, authorised officials and the
+                primacy of statutory forms.
+              </p>
+            </div>
+          </li>
+          <li id="source-2">
+            <span class="source-number">[2]</span>
+            <div>
+              <span class="source-publisher"
+                >ELECTION COMMISSION OF INDIA · PIB · 22 JANUARY 2026</span
+              ><a
+                href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2217429"
+                target="_blank"
+                rel="noopener noreferrer"
+                >ECINet’s official launch <i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+              <p>
+                Launch of the unified platform integrating more than 40
+                applications and portals.
+              </p>
+            </div>
+          </li>
+          <li id="source-3">
+            <span class="source-number">[3]</span>
+            <div>
+              <span class="source-publisher"
+                >ELECTION COMMISSION OF INDIA · PIB · 26 SEPTEMBER 2026</span
+              ><a
+                href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2315309"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Commission decisions on ECINet access and review
+                <i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+              <p>
+                Role-based access aligned with statutory powers; a
+                commission-led review including an independent IIT/IIIT expert.
+              </p>
+            </div>
+          </li>
+          <li id="source-4">
+            <span class="source-number">[4]</span>
+            <div>
+              <span class="source-publisher">ESTONIAN ELECTION AUTHORITY</span
+              ><a
+                href="https://www.valimised.ee/en/internet-voting/frequently-asked-questions/questions-about-reliability-i-voting"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Questions about the reliability of i-voting
+                <i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+              <p>
+                Public source code since July 2013 and independent auditing. See
+                question 31.
+              </p>
+            </div>
+          </li>
+          <li id="source-5">
+            <span class="source-number">[5]</span>
+            <div>
+              <span class="source-publisher">SWISS FEDERAL CHANCELLERY</span
+              ><a
+                href="https://www.bk.admin.ch/en/examination-of-systems"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Examination of systems <i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+              <p>
+                Independent examinations, source and documentation disclosure,
+                public scrutiny and published reports.
+              </p>
+            </div>
+          </li>
+          <li id="source-6">
+            <span class="source-number">[6]</span>
+            <div>
+              <span class="source-publisher"
+                >THE INDIAN EXPRESS · EXPLAINER · REPORTING, NOT AN ECI
+                DOCUMENT</span
+              ><a
+                href="https://indianexpress.com/article/explained/election-commission-nine-new-decisions-what-changes-and-what-doesnt-10895475/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Election Commission’s nine new decisions: What changes and what
+                doesn’t <i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+              <p>
+                Explains the review announcement and unresolved questions about
+                the online Form 6 field and Goa’s restoration facility.
+              </p>
+            </div>
+          </li>
+          <li id="source-7">
+            <span class="source-number">[7]</span>
+            <div>
+              <span class="source-publisher"
+                >THE INDIAN EXPRESS · EDITORIAL OPINION · 29 SEPTEMBER
+                2026</span
+              ><a
+                href="https://indianexpress.com/article/opinion/editorials/cec-needs-to-correct-course-not-just-damage-control-10898169/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >CEC needs to correct course, not just damage control
+                <i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+              <p>
+                Argues for institutional accountability beyond the announced
+                changes. Context for this demand, not independent technical
+                evidence or proof of manipulation.
+              </p>
+            </div>
+          </li>
+          <li id="source-8">
+            <span class="source-number">[8]</span>
+            <div>
+              <span class="source-publisher"
+                >THE INDIAN EXPRESS · ORIGINAL INVESTIGATION · REPORTED INTERNAL
+                RECORDS</span
+              ><a
+                href="https://indianexpress.com/article/express-exclusive/election-commission-sir-14-objections-gyanesh-kumar-sukhbir-singh-sandhu-vivek-joshi-10889737/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >14 times in 10 months, two Election Commissioners objected on
+                record to poll panel steps <i data-lucide="arrow-up-right"></i
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+              <p>
+                Reports the Form 6, access-control and Goa restoration concerns.
+                The newspaper says it examined the exchanges; this website has
+                not independently obtained those underlying records.
+              </p>
+            </div>
+          </li>
+        </ol>
+        <details class="methodology">
+          <summary>
+            The evidence behind this demand <i data-lucide="plus"></i>
+          </summary>
+          <div>
+            <p>
+              ECI statements are attributed, not treated as independent proof of
+              implementation. The diagrams explain concepts; they are not
+              reverse-engineered ECINet designs. The demand and disclosure
+              boundaries are our advocacy position, not a claim about an
+              existing legal duty to publish source code. “Public verification”
+              here means independent inspection and testing—not proof that a
+              system is flawless.
+            </p>
+            <p>
+              Our availability statement is a bounded research finding, not an
+              exhaustive inventory of every ECI publication. The newspaper’s
+              investigation and explainer are attributed reporting; its
+              editorial is opinion. They do not substitute for the underlying
+              internal documents or an independent examination of the software.
+              PIB blocked direct automated retrieval during preparation; those
+              releases were checked through search-indexed primary-source
+              passages. The Estonian and Swiss pages were retrieved directly.
+              Recheck the linked originals before relying on time-sensitive
+              details.
+            </p>
+            <p>
+              This website is independent and is not affiliated with the
+              Election Commission of India. The website code is MIT-licensed;
+              third-party source materials retain their own rights.
+            </p>
+          </div>
+        </details>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <a href="#" class="footer-brand">openelections<span>.in</span></a>
+      <p>Public infrastructure. Public understanding.</p>
+      <a
+        href="https://github.com/akshatagarwl/openelections"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Source on GitHub <i data-lucide="github"></i
+        ><span class="sr-only"> (opens in a new tab)</span></a
+      ><a href="/LICENSE.txt"
+        >MIT licence <i data-lucide="arrow-up-right"></i></a
+      ><a href="#" class="back-to-top" aria-label="Back to top"
+        ><i data-lucide="arrow-up"></i
+      ></a>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
