@@ -8,7 +8,7 @@ Status: proposal for review. This document follows `REQUIREMENTS.md`, and where 
 |---|---|
 | Structure | **One page.** Sections are reached by anchor links. There are no sub-routes. |
 | Language | English at launch. The build is ready for i18n from day one (§7). Later we add the major Indian regional languages. |
-| Attribution | None. No personal names appear in the site, the commits, or the metadata. The repo uses the git identity `openelections <maintainers@openelections.in>`. |
+| Attribution | No personal names in site content, page metadata, or commit authorship. Commits use the git identity `openelections <maintainers@openelections.in>`, which is a label only and has no email routing. The repository is hosted at `github.com/akshatagarwl/openelections`, so the owner's account is visible through the repo link. |
 | Sources | Cited by name, publisher, date and document identifier. **No hyperlinks to quoted articles.** URLs and archive snapshots are kept only in the public repo (`content/sources.yaml`, `research/`), so anyone can re-verify them. |
 | Feedback | GitHub issues only. We use issue templates for correction, new source and scope. |
 | Repository | Public. The site links only to the repo itself, which is the one outbound link. |
