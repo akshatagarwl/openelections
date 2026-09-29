@@ -4,18 +4,18 @@ Status: proposal for review. This document follows `REQUIREMENTS.md`, and where 
 
 ## 0. Decisions
 
-| Topic | Decision |
-|---|---|
-| Structure | **One page.** Sections are reached by anchor links. There are no sub-routes. |
-| Language | English at launch. The build is ready for i18n from day one (§7). Later we add the major Indian regional languages. |
-| Attribution | No personal names in site content or page metadata. The repository at `github.com/akshatagarwl/openelections` and its commit history are attributed to the maintainer. |
-| Sources | Cited by name, publisher, date and document identifier. **No hyperlinks to quoted articles.** URLs and archive snapshots are kept only in the public repo (`content/sources.yaml`, `research/`), so anyone can re-verify them. |
-| Feedback | GitHub issues only. We use issue templates for correction, new source and scope. |
-| Repository | Public. The site links only to the repo itself, which is the one outbound link. |
-| The request | Published on the site. An RTI application will follow. The site includes an RTI status block that shows "Planned" until the application is filed. |
-| Comparison | Each system appears only after a primary-source check (see `research/international-comparison.md`). Any cell marked ⚠️ stays hidden until someone re-checks it by hand. |
-| Brand | Mark and wordmark are in `brand/` (§6). |
-| Components | Reuse over custom. We use stock shadcn/ui and uselayouts registry components, plus plain Markdown. The target is zero custom components. |
+| Topic       | Decision                                                                                                                                                                                                                       |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Structure   | **One page.** Sections are reached by anchor links. There are no sub-routes.                                                                                                                                                   |
+| Language    | English at launch. The build is ready for i18n from day one (§7). Later we add the major Indian regional languages.                                                                                                            |
+| Attribution | No personal names in site content or page metadata. The repository at `github.com/akshatagarwl/openelections` and its commit history are attributed to the maintainer.                                                         |
+| Sources     | Cited by name, publisher, date and document identifier. **No hyperlinks to quoted articles.** URLs and archive snapshots are kept only in the public repo (`content/sources.yaml`, `research/`), so anyone can re-verify them. |
+| Feedback    | GitHub issues only. We use issue templates for correction, new source and scope.                                                                                                                                               |
+| Repository  | Public. The site links only to the repo itself, which is the one outbound link.                                                                                                                                                |
+| The request | Published on the site. An RTI application will follow. The site includes an RTI status block that shows "Planned" until the application is filed.                                                                              |
+| Comparison  | Each system appears only after a primary-source check (see `research/international-comparison.md`). Any cell marked ⚠️ stays hidden until someone re-checks it by hand.                                                        |
+| Brand       | Mark and wordmark are in `brand/` (§6).                                                                                                                                                                                        |
+| Components  | Reuse over custom. We use stock shadcn/ui and uselayouts registry components, plus plain Markdown. The target is zero custom components.                                                                                       |
 
 ## 1. Design goal
 
@@ -23,12 +23,12 @@ The page reads like a careful public brief, not a campaign. Within 10 seconds a 
 
 ## 2. Labelled statements
 
-| Label | Meaning | Needs |
-|---|---|---|
-| **Fact** | Verifiable from a primary document | Footnote to a primary source |
-| **Official claim** | What ECI or another authority says | Footnote to the statement itself |
-| **Analysis** | Our reasoning | References to the facts it relies on |
-| **Open question** | Public evidence cannot answer it | The evidence that would answer it |
+| Label              | Meaning                            | Needs                                |
+| ------------------ | ---------------------------------- | ------------------------------------ |
+| **Fact**           | Verifiable from a primary document | Footnote to a primary source         |
+| **Official claim** | What ECI or another authority says | Footnote to the statement itself     |
+| **Analysis**       | Our reasoning                      | References to the facts it relies on |
+| **Open question**  | Public evidence cannot answer it   | The evidence that would answer it    |
 
 Artefact status: `Public` · `Restricted access` · `Claimed, not verifiable` · `Not public` · `Unknown`.
 `Restricted access` is needed for cases like Brazil, where source code is shown only to accredited entities.
@@ -52,21 +52,23 @@ The sections run top to bottom. The sticky nav links to the anchors.
 ```
 
 ### Section rhythm (borrowed from uselayouts)
+
 The uselayouts landing page alternates full-bleed bands and keeps content inside one container. We follow the same pattern:
 
-| Section | Band |
-|---|---|
+| Section | Band                                                                         |
+| ------- | ---------------------------------------------------------------------------- |
 | summary | white, inset rounded panel (`rounded-[10px]`, like the uselayouts hero card) |
-| ecinet | warm off-white `#F5F3EE` |
-| ledger | white |
-| review | dark `#1B1C1D`, the single high-contrast moment |
-| compare | warm off-white |
-| request | white |
-| method | warm off-white |
+| ecinet  | warm off-white `#F5F3EE`                                                     |
+| ledger  | white                                                                        |
+| review  | dark `#1B1C1D`, the single high-contrast moment                              |
+| compare | warm off-white                                                               |
+| request | white                                                                        |
+| method  | warm off-white                                                               |
 
 Every band uses: container `max-w-[1200px]`; padding `px-4 sm:px-8 lg:px-[120px]` and `py-16 lg:py-[100px]`. The section head is an H2 with a short lede, arranged in a row at `lg` (`flex-col lg:flex-row lg:items-end lg:justify-between`).
 
 ### Wireframe
+
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │ [■] openelections.in   Ledger  Compare  Request  Method   GH │ sticky
@@ -87,6 +89,7 @@ Every band uses: container `max-w-[1200px]`; padding `px-4 sm:px-8 lg:px-[120px]
 ```
 
 ### Section details
+
 - **#summary:** the three status counts are shadcn `Card`s. Each count links to `#ledger` with that status pre-filtered through a URL hash (e.g. `#ledger?status=not-public`).
 - **#ecinet:** Markdown prose with labels. Each Official claim is a Markdown blockquote with its footnote.
 - **#ledger:** shadcn `Data Table` (TanStack) with filtering and sorting. Below it, a stock `Accordion` has one item per artefact with an anchor id, e.g. `#ledger-rbac`. On mobile the table scrolls horizontally.
@@ -102,7 +105,7 @@ Every band uses: container `max-w-[1200px]`; padding `px-4 sm:px-8 lg:px-[120px]
 ## 4. Citations without cross-links
 
 - We use GFM footnotes (`remark-gfm`). Clicking a superscript jumps to the footnote at the bottom of the page, and the footnote links back up to the text. These are the only links inside prose.
-- Footnote format: *Publisher, "Title", document id or section, date. Accessed YYYY-MM-DD.* There is no URL.
+- Footnote format: _Publisher, "Title", document id or section, date. Accessed YYYY-MM-DD._ There is no URL.
 - A single line under Sources reads: "URLs and archived copies for every source are in the public repository." It links to the repo only.
 - The build fails if a source used on the page is missing from `content/sources.yaml`, or has no `url` and `archive_url` there. The repo holds the URLs, and the page never renders them.
 
@@ -121,6 +124,7 @@ brand/                  logo assets
 ```
 
 The build checks:
+
 1. Every footnote id exists in `sources.yaml`, and each entry has `url` and `archive_url`.
 2. Every ledger row has `checked`.
 3. Every compare cell has a source, unless its status is `Unknown`.
@@ -140,7 +144,7 @@ It follows the uselayouts reference in `.references/uselayouts`, which is local 
 - **Cards:** `rounded-2xl border border-[#E2E2E2]`. On hover the border darkens (`hover:border-[#071A31]/25`), with no lift.
 - **Motion:** we follow the uselayouts rule that "every animation does a job: feedback, focus, or flow". The only motion is what the stock components already have (accordion expand, tab switch). Easing is uselayouts `--ease-out: cubic-bezier(0.23,1,0.32,1)`. `prefers-reduced-motion` disables all of it.
 - **Colour neutrality:** no saffron, green or party colours. Status colours are muted greys and blue-greys, always paired with an icon and text.
-- **Logo** (`brand/`): a dark rounded square, matching the uselayouts brand shape. Inside it is an *open box* with a single ballot above it, visible before it goes in. The idea is an open process, in plain view.
+- **Logo** (`brand/`): a dark rounded square, matching the uselayouts brand shape. Inside it is an _open box_ with a single ballot above it, visible before it goes in. The idea is an open process, in plain view.
   - `mark.svg`: the main mark
   - `mark-inverted.svg`: for dark bands
   - `favicon.svg`
