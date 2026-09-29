@@ -24,12 +24,12 @@ export default defineConfig({
         cache: { input: [{ auto: true }, "!.wrangler/**"] },
       },
       start: {
-        command: "wrangler dev --config dist/server/wrangler.json",
+        command: "npx wrangler dev --config dist/server/wrangler.json",
         dependsOn: ["build"],
         cache: false,
       },
       deploy: {
-        command: "wrangler deploy --config dist/server/wrangler.json",
+        command: "npx wrangler deploy --config dist/server/wrangler.json",
         dependsOn: ["check", "build"],
         cache: false,
       },

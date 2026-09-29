@@ -33,7 +33,7 @@ There are **no custom React components.**
 | Concern     | Tool                                                                                                                                       |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | Framework   | vinext 1.0 (Next.js API on Vite 8), App Router, fully pre-rendered                                                                         |
-| Toolchain   | Vite+ 1.0 (`vp check`, `vp build`, oxlint, oxfmt, pre-commit hook)                                                                         |
+| Toolchain   | Vite+ 1.0: oxlint, oxfmt, pre-commit hook, and Vite Task (`vp run check` and `vp run build` are cached; `start` and `deploy` are not)      |
 | Hosting     | Cloudflare Workers with static assets, configured by `wrangler.jsonc`, deployed with `npx wrangler`                                        |
 | UI          | shadcn/ui `base-nova` (Base UI), neutral palette; `@uselayouts` registry is configured for future use                                      |
 | Content     | One MDX file, with `remark-gfm` for tables and footnotes                                                                                   |
