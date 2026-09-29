@@ -18,15 +18,15 @@ This document records the design as built. It follows `REQUIREMENTS.md`, and whe
 
 ## 1. What is custom, and why
 
-Everything that could be taken ready-made was. The only custom pieces are:
+**Visuals and data over prose.** Each section makes its point with a stock component: stat cards, a dated timeline, an icon grid, a status matrix, a comparison table, request cards, and an accordion. The page uses text only for sourced claims and one-line ledes.
 
-| Custom piece                    | Size      | Why nothing ready-made fits                                                                                                     |
-| ------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `app/page.tsx`                  | ~70 lines | Header, footer, and mapping Markdown tables to the shadcn `Table`. Every framework needs one page file.                         |
-| Band rules in `app/globals.css` | ~25 lines | Full-bleed section bands with a start-aligned container, the warm surface, table-cell wrapping, and button links under `prose`. |
-| `--surface-warm` token          | 1 line    | The uselayouts warm band colour (`#F5F3EE`) as a theme token, so `@shadcn/lint` accepts it.                                     |
+| Custom piece                               | Size       | Why nothing ready-made fits                                                                                                |
+| ------------------------------------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `app/page.tsx`                             | ~100 lines | Header with skip link and nav, footer, and mapping Markdown tables to the shadcn `Table`                                   |
+| Band rules in `app/globals.css`            | ~80 lines  | Full-bleed bands, a side-heading grid, one spacing rhythm, a table scroll cue, quiet footnote back-links, selection colour |
+| `--surface-warm`, `--surface-night` tokens | 2 lines    | The uselayouts band colours as theme tokens, so `@shadcn/lint` accepts them                                                |
 
-There are **no custom React components.**
+There are **no custom React components.** The uselayouts registry was checked, but its components are photo- and gesture-driven showpieces (polaroids, 3D books, drag decks) that don't suit a civic data brief. The page uses shadcn's data components instead.
 
 ## 2. Stack
 
@@ -41,31 +41,33 @@ There are **no custom React components.**
 | Fonts       | Inter Variable and Geist Mono Variable, self-hosted through Fontsource                                                                     |
 | Design lint | `@shadcn/lint`: no arbitrary values, no raw colours, no inline styles, no restyling of components, no unknown classes, static classes only |
 
-## 3. Labelled statements
+## 3. Labels and statuses
 
-| Label          | Rendered as                   | Meaning                                                   |
-| -------------- | ----------------------------- | --------------------------------------------------------- |
-| Fact           | `<Badge>`                     | Verifiable from a cited document                          |
-| Official claim | `<Badge variant="secondary">` | What an authority says, which the public cannot yet check |
-| Analysis       | `<Badge variant="outline">`   | Our reasoning                                             |
-| Open question  | `<Badge variant="ghost">`     | Something public evidence cannot yet answer               |
+Every label is a stock `Badge` with a lucide icon plus text, so none relies on colour alone.
 
-Ledger and comparison statuses: **Public** (secondary), **Claimed** or **Announced** (secondary), **Restricted** (outline), **None found** (outline). Every label is text, so none of them relies on colour.
+| Label                        | Badge     | Icon    |
+| ---------------------------- | --------- | ------- |
+| Fact, Public                 | default   | `Check` |
+| Claim, Claimed               | secondary | `Quote` |
+| Announced                    | secondary | `Clock` |
+| Restricted (accredited only) | secondary | `Lock`  |
+| None found                   | outline   | `Minus` |
+| Pending check                | ghost     | none    |
 
 ## 4. The page
 
-| Anchor     | Band                                      | Content                                                                     |
-| ---------- | ----------------------------------------- | --------------------------------------------------------------------------- |
-| `#summary` | white                                     | Last-reviewed badge, H1, two-paragraph answer, "Read the request" button    |
-| `#ecinet`  | warm                                      | Labelled statements about ECINet, each with a footnote                      |
-| `#ledger`  | white                                     | Markdown table of artefact, status, what is public, and what is missing     |
-| `#review`  | dark (`.dark` switches the shadcn tokens) | Analysis, plus a table comparing institutional review with public scrutiny  |
-| `#compare` | warm                                      | Markdown table of what each system publishes, with a status column          |
-| `#request` | white                                     | Numbered asks, a "We are not asking for" `Alert`, and an RTI status `Alert` |
-| `#method`  | warm                                      | Sources, labels, scope, corrections table                                   |
-| footnotes  | warm                                      | GFM footnotes, labelled "Sources"                                           |
+| Anchor     | Band  | Visual                                                   | Components                                  |
+| ---------- | ----- | -------------------------------------------------------- | ------------------------------------------- |
+| `#summary` | white | Question, one-line answer, three stat cards              | `Card`, `Button`                            |
+| `#ecinet`  | warm  | Dated timeline of five sourced events                    | `ItemGroup`/`Item`, `Badge`                 |
+| `#ledger`  | white | Grid of the seven artefacts with status                  | `Item` grid, lucide icons, `Badge`          |
+| `#review`  | dark  | Institutional review vs public scrutiny                  | Markdown table → `Table`                    |
+| `#compare` | warm  | Status matrix with ECINet first, then five other systems | Markdown table → `Table` with `Badge` cells |
+| `#request` | white | Seven request cards, "not asking for" and RTI callouts   | `Card`, `Alert`                             |
+| `#method`  | warm  | Sourcing, labels, scope, corrections                     | `Accordion`                                 |
+| footnotes  | warm  | "Sources"                                                | GFM footnotes                               |
 
-The layout follows the uselayouts reference in `.references/uselayouts`, which is local only and never committed. It uses alternating full-bleed white, warm and dark bands, one centred container (`max-w-6xl`), large tight headings, and Inter for body text.
+At `lg`, each band is a side-heading grid: the H2 sits on the left and the lede on the right, and component blocks span the full width. The layout follows the uselayouts reference in `.references/uselayouts`, which is local only and never committed.
 
 ## 5. Content workflow
 
@@ -82,7 +84,7 @@ The layout follows the uselayouts reference in `.references/uselayouts`, which i
 
 ## 7. Non-functional
 
-- The page is pre-rendered and readable with JS disabled. The only client JS is what Base UI buttons ship.
+- The page is pre-rendered. Everything is readable with JS disabled except the `#method` accordion panels, which need Base UI to open.
 - No trackers or third-party requests. Fonts are self-hosted.
 - WCAG 2.2 AA. Every section has a stable anchor.
 - Licences: code under MIT, content under CC BY 4.0.
