@@ -22,7 +22,7 @@ The Cloudflare Vite plugin emits Cloudflare Build Output under `.cloudflare/outp
 
 ### Deploy with the Cloudflare CLI
 
-Live Workers URL: https://openelections-in.akshatag.workers.dev
+Production domain: https://openelections.in
 
 ```sh
 npx cf auth login          # once, for an authorised Cloudflare account
@@ -31,7 +31,7 @@ npm test
 npx cf deploy --prebuilt   # deploy the exact build just checked
 ```
 
-For subsequent deployments, `npm run deploy` builds and deploys through the pinned `cf` CLI. `cloudflare.config.ts` names the static-assets Worker `openelections-in`, enables its `workers.dev` URL, and returns 404 for unknown asset paths. It does not configure a custom domain or modify DNS. Authentication remains in the CLI profile, not the repository; `.cloudflare/`, `.wrangler/` and local credentials are ignored.
+For subsequent deployments, `npm run deploy` builds and deploys through the pinned `cf` CLI. `cloudflare.config.ts` names the static-assets Worker `openelections-in`, binds the custom domain `openelections.in`, and returns 404 for unknown asset paths. Cloudflare manages the custom-domain DNS and certificate. Both `workersDev` and `previewUrls` are explicitly disabled: the site is publicly served through `openelections.in`, not a `workers.dev` URL. Authentication remains in the CLI profile, not the repository; `.cloudflare/`, `.wrangler/` and local credentials are ignored.
 
 The pinned beta CLI and Vite plugin are recorded in the lockfile. Use `npm ci` for repeatable installs. The `undici` patch override fixes GHSA-3wwx-pv8p-q78v in the CLI's local Miniflare tooling; remove it when upstream ships a patched dependency.
 
@@ -41,7 +41,7 @@ The site links directly to the public source repository: [akshatagarwl/openelect
 
 The hero and social preview use: **Make source code of ECINet/ERONet public.**
 
-`public/og.png` is a committed 1200 × 630 Open Graph image, with a self-contained editable SVG at `public/og.svg`. Open Graph and Twitter metadata use the production URL `https://openelections.in/og.png`; update those absolute URLs if deploying under a different domain. The image becomes available at `/og.png` on the deployed host. The canonical and social URLs intentionally still point to `openelections.in`; that domain must be connected before those production URLs work.
+`public/og.png` is a committed 1200 × 630 Open Graph image, with a self-contained editable SVG at `public/og.svg`. Open Graph and Twitter metadata use the production URL `https://openelections.in/og.png`; update those absolute URLs if deploying under a different domain. The image becomes available at `/og.png` on the deployed host. The canonical and social URLs point to the configured production domain, `openelections.in`.
 
 To regenerate the original vector artwork (requires Playwright Chromium):
 
