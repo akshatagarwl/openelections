@@ -3,10 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vp dev",
-    "build": "vp build",
-    "start": "wrangler dev --config dist/server/wrangler.json",
-    "deploy": "vp build && wrangler deploy --config dist/server/wrangler.json",
     "prepare": "vp config"
   },
   "dependencies": {

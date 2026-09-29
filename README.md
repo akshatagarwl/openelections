@@ -11,12 +11,12 @@ A single-page, source-backed public record of what can and cannot be publicly ve
 
 ```bash
 vp install
-vp dev          # dev server
-vp check        # format, lint (incl. @shadcn/lint), type check
-vp build        # pre-rendered Worker build
-pnpm start      # serve the build locally with wrangler
+vp dev            # dev server
+vp run check      # format, lint (incl. @shadcn/lint), type check (cached)
+vp run build      # pre-rendered Worker build (cached)
+vp run start      # build if needed, then serve locally with wrangler
 ```
 
-Deploy (after the gate in `DESIGN.md`): `vp build && npx wrangler deploy --config dist/server/wrangler.json`
+Deploy (after the gate in `DESIGN.md`): `vp run deploy` (runs `check` and `build` from cache, then `wrangler deploy`)
 
 Code: MIT. Content: CC BY 4.0 (see `content/LICENSE.md`).

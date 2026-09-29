@@ -10,6 +10,27 @@ export default defineConfig({
     "*": "vp check --fix",
   },
   fmt: {},
+  // Vite Task: `vp run build` / `vp run check` are cached and replayed when inputs are unchanged.
+  run: {
+    tasks: {
+      check: "vp check",
+      build: {
+        command: "vp build",
+        // The Cloudflare plugin rewrites .wrangler/deploy/config.json on every build; it is output, not input.
+        cache: { input: [{ auto: true }, "!.wrangler/**"] },
+      },
+      start: {
+        command: "wrangler dev --config dist/server/wrangler.json",
+        dependsOn: ["build"],
+        cache: false,
+      },
+      deploy: {
+        command: "wrangler deploy --config dist/server/wrangler.json",
+        dependsOn: ["check", "build"],
+        cache: false,
+      },
+    },
+  },
   lint: {
     // Stock shadcn/ui source is vendored as-is; lint how we use it, not its internals.
     ignorePatterns: ["components/ui/**"],

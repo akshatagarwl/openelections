@@ -72,7 +72,7 @@ The layout follows the uselayouts reference in `.references/uselayouts`, which i
 1. Edit `content/en/page.mdx`. Prose, tables and footnotes are all plain Markdown.
 2. When you add a footnote, add its ID and URL to `research/sources.md` in the same commit.
 3. When you change the ledger, comparison or request, bump the version in the `#summary` badge and add a row to the corrections table.
-4. Run `vp check` and `vp build`. The pre-commit hook runs `vp check --fix` on staged files.
+4. Run `vp run check` and `vp run build`. The pre-commit hook runs `vp check --fix` on staged files.
 
 ## 6. Localisation readiness
 
