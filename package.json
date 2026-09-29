@@ -1,7 +1,14 @@
 {
   "name": "openelections",
   "private": true,
-  "packageManager": "pnpm@12.6.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev",
+    "build": "vp build",
+    "start": "wrangler dev --config dist/server/wrangler.json",
+    "deploy": "vinext-cloudflare deploy --config dist/server/wrangler.json",
+    "prepare": "vp config"
+  },
   "dependencies": {
     "@vinext/cloudflare": "1.0.0",
     "react": "19.3.0",
@@ -19,14 +26,9 @@
     "@vitejs/plugin-rsc": "0.5.35",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2",
-    "vite": "8.3.1",
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
     "wrangler": "4.143.0"
   },
-  "type": "module",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "start": "wrangler dev --config dist/server/wrangler.json",
-    "deploy": "vinext-cloudflare deploy --config dist/server/wrangler.json"
-  }
+  "packageManager": "pnpm@12.6.0"
 }
