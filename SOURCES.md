@@ -101,6 +101,28 @@ Research baseline: 29 September 2026. This is not a continuously monitored inven
 - These are linked materials and the publisher's described process, not this site's independent confirmation that a particular deployment followed it. Matching hashes alone do not establish the live deployment; cryptographic proofs are conditional on their assumptions.
 - Repository links follow current default/master branches. Pin a release/commit before attempting to reproduce a specific historical build.
 
+## [12] ECI technology overview
+
+- Publisher: Election Commission of India.
+- URL: https://www.eci.gov.in/voicenet/Article_leveraging_technology%20.htm
+- Supports: electoral-roll computerisation beginning in August 1997; ERONET as a web-based platform for ERO processing and monitoring workflows.
+- Limit: a technology overview, not a source-code or architecture disclosure.
+
+## [13] ECI ERONET page
+
+- Publisher: Election Commission of India.
+- URL: https://www.eci.gov.in/eronet
+- Supports: ERONET as common electoral-roll infrastructure using a unified national database; form processing, duplicate detection, field verification and standardised e-roll printing.
+- Limit: product/information page, not independent audit evidence.
+
+## [14] ECINet beta use in Bihar
+
+- Publisher: Election Commission of India, through the Press Information Bureau.
+- Date: 27 November 2025.
+- URL: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2196349
+- Supports: beta version of ECINet used during the Bihar elections before the January 2026 official launch.
+- Limit: official announcement, not an implementation audit.
+
 ## Retrieval and uncertainty
 
 PIB returned HTTP 403 to direct automated fetches in this session. Its releases were checked through search-indexed passages from the primary PIB URLs. The Estonia and Switzerland pages, IVXV README, Swiss Post source README, build guide, documentation indexes and trusted-build process were directly fetched and inspected. We did not compile the systems, independently validate the cryptographic proofs, or audit deployed binaries. Publication wording and dates should be rechecked against the originals before future publication or reliance. The site's methodology discloses this limitation.

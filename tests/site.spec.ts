@@ -209,7 +209,7 @@ test("the demand is explicit, scoped, and reachable from the main action", async
   await expect(page).toHaveURL(/#checklist$/);
   await expect(page.locator("#checklist-title")).toBeInViewport();
   await expect(page.locator("#checklist-title")).toContainText(
-    "Public by default.",
+    "What should ECI publish?",
   );
   await expect(page.locator(".checklist-caption")).toContainText(
     "not voter data",
@@ -310,7 +310,10 @@ test("the narrative and references remain available without JavaScript", async (
   await page.goto("http://127.0.0.1:4173/");
   await expect(page.locator("h1")).toBeVisible();
   await expect(page.locator("#sources-title")).toHaveText("The evidence desk.");
-  await expect(page.locator(".source-list li")).toHaveCount(11);
+  await expect(page.locator(".source-list li")).toHaveCount(14);
+  await expect(page.locator("#essay-title")).toHaveText(
+    "The argument for public verification",
+  );
   await page
     .locator("summary")
     .filter({ hasText: "Version & change history" })
