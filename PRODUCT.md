@@ -6,7 +6,7 @@
 web
 
 ## Stack
-Delegated in the brief and confirmed through the decision page: lightweight Vite, accessible HTML, custom interactive diagrams.
+React/Vinext on Vite+, Base UI controls, Tailwind v4 theme and layout utilities, TypeScript, and @shadcn/lint. Preserve the accessible server-rendered narrative, native disclosures, custom interactive diagrams and exhibition design.
 
 ## Users
 Citizens, journalists and technical readers who can scrutinise and share a nonpartisan demand for an enduring open-source publication policy for election software.

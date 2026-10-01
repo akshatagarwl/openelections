@@ -68,8 +68,7 @@ try {
   let crc = 0xffffffff;
   for (const byte of Buffer.concat([type, data])) {
     crc ^= byte;
-    for (let bit = 0; bit < 8; bit++)
-      crc = (crc >>> 1) ^ (crc & 1 ? 0xedb88320 : 0);
+    for (let bit = 0; bit < 8; bit++) crc = (crc >>> 1) ^ (crc & 1 ? 0xedb88320 : 0);
   }
   const chunk = Buffer.alloc(data.length + 12);
   chunk.writeUInt32BE(data.length, 0);
@@ -80,9 +79,7 @@ try {
     new URL("../public/og.png", import.meta.url),
     Buffer.concat([png.subarray(0, -12), chunk, png.subarray(-12)]),
   );
-  console.log(
-    "Generated public/og.svg and public/og.png (1200 × 630), with embedded provenance.",
-  );
+  console.log("Generated public/og.svg and public/og.png (1200 × 630), with embedded provenance.");
 } finally {
   await browser.close();
 }

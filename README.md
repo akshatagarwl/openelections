@@ -4,7 +4,7 @@ A nonpartisan demand for a standing open-source publication policy for ECINet/ER
 
 ## Run
 
-Requires Node.js 22.12 or newer (the Cloudflare `cf` CLI requires Node 22+, and Vite requires at least 22.12 on that line).
+Requires Node.js 22.18+ on the 22.x line, 24.11+ on the 24.x line, or 26+. The project-local Vite+ CLI is installed by `npm ci`; no global installation is required.
 
 ```sh
 npm ci
@@ -18,7 +18,7 @@ npm run build
 npm run preview
 ```
 
-The Cloudflare Vite plugin emits Cloudflare Build Output under `.cloudflare/output/`, consumed by `cf deploy --prebuilt`. The site remains static: no backend, accounts, API keys, cookies, external font requests or analytics. HTTPS is recommended for clipboard access; a text-file download is provided if clipboard access fails.
+Vite+ builds the Vinext React App Router application. The Cloudflare Vite plugin emits Cloudflare Build Output under `.cloudflare/output/`, consumed by `cf deploy --prebuilt`. A Worker now server-renders the narrative; there are still no accounts, application API keys, cookies, external font requests or analytics. HTTPS is recommended for clipboard access; a text-file download is provided if clipboard access fails.
 
 ### Deploy with the Cloudflare CLI
 
@@ -26,14 +26,15 @@ Production domain: https://openelections.in
 
 ```sh
 npx cf auth login          # once, for an authorised Cloudflare account
+npm run check
 npm run build
-npm test
+npm run test:production
 npx cf deploy --prebuilt   # deploy the exact build just checked
 ```
 
-For subsequent deployments, `npm run deploy` builds and deploys through the pinned `cf` CLI. `cloudflare.config.ts` names the static-assets Worker `openelections-in`, binds the custom domain `openelections.in`, and returns 404 for unknown asset paths. Cloudflare manages the custom-domain DNS and certificate. Both `workersDev` and `previewUrls` are explicitly disabled: the site is publicly served through `openelections.in`, not a `workers.dev` URL. Authentication remains in the CLI profile, not the repository; `.cloudflare/`, `.wrangler/` and local credentials are ignored.
+For subsequent deployments, `npm run deploy` builds and deploys through the pinned `cf` CLI. `cloudflare.config.ts` names the Vinext Worker `openelections-in`, binds the custom domains `openelections.in` and `www.openelections.in`, and uses Vinext's fetch handler with the `ASSETS` binding. Unknown routes return 404 rather than a client-side routing fallback. Cloudflare manages the custom-domain DNS and certificate. Both `workersDev` and `previewUrls` are explicitly disabled: the site is publicly served through `openelections.in` and `www.openelections.in`, not a `workers.dev` URL. Authentication remains in the CLI profile, not the repository; `.cloudflare/`, `.wrangler/` and local credentials are ignored.
 
-The pinned beta CLI and Vite plugin are recorded in the lockfile. Use `npm ci` for repeatable installs. The `undici` patch override fixes GHSA-3wwx-pv8p-q78v in the CLI's local Miniflare tooling; remove it when upstream ships a patched dependency.
+The pinned beta Cloudflare CLI and Vite plugin are recorded in the lockfile. Use `npm ci` for repeatable installs. The `undici` patch override fixes GHSA-3wwx-pv8p-q78v in the CLI's local Miniflare tooling; remove it when upstream ships a patched dependency. A scoped `satori` → `fflate` override pins patched 0.7.5 for GHSA-px8p-9vwx-vf98 without downgrading Vinext; remove it when upstream updates that dependency.
 
 The site links directly to the public source repository: [akshatagarwl/openelections](https://github.com/akshatagarwl/openelections). No source ZIP is generated or served.
 
@@ -56,24 +57,30 @@ The generator embeds Manrope and artwork provenance. Normal production builds do
 
 ```sh
 npx playwright install chromium
+npm run check
 npm test
+npm run build
+npm run test:production
 ```
 
-Playwright covers desktop/mobile screenshots, WCAG A/AA axe checks, 320px overflow, diagram controls, pause/reduced motion, chapter navigation, clipboard/download fallback, native disclosure and no-JavaScript reading. Automated accessibility tests are not a substitute for assistive-technology testing. Screenshots are saved in `.impeccable/review/`.
+`npm run check` runs Vite+ formatting, lint and type checks. `npm run format` applies formatting; `npm run lint` runs Oxlint with @shadcn/lint registered. No new @shadcn/lint rules are enabled; configure design-system policies in `vite.config.ts`. `npm test` uses the development server; `npm run test:production` runs the same suite against the built Worker via local preview, without deploying.
+
+Playwright covers desktop/mobile screenshot comparisons against the original design, WCAG A/AA axe checks, 320px overflow, diagram controls, pause/reduced motion, chapter navigation, clipboard/download fallback, native disclosure, no-JavaScript reading, unknown-route 404s and absence of external requests/tracking cookies. Hero baselines live in `tests/visual-baseline/`; review visual changes before updating them. Automated accessibility tests are not a substitute for assistive-technology testing. Screenshots are saved in `.impeccable/review/`.
 
 ## Structure
 
-- `index.html`: complete semantic story and adjacent citations; readable without JavaScript.
-- `src/main.ts`: small progressively enhanced interactions and reading progress.
+- `app/page.tsx`, `app/layout.tsx`: server-rendered semantic story, adjacent citations and social metadata; readable without JavaScript.
+- `src/components/`: React/Base UI interactions, icons and reading progress.
+- `src/content.ts`: diagram explanations and the shareable demand.
 - `src/style.css`: responsive exhibition design, self-hosted Manrope, reduced motion and print styles.
-- `cloudflare.config.ts`, `vite.config.ts`: Cloudflare static-assets Worker configuration.
+- `cloudflare.config.ts`, `vite.config.ts`: Cloudflare Vinext Worker and Vite+ tooling configuration.
 - `SOURCES.md`: evidence mapping, research limitations and update instructions.
 - `scripts/generate-og.mjs`: reproducible social-preview artwork.
 - `public/og.png`, `public/og.svg`: raster social preview and vector master.
 - `tests/site.spec.ts`: browser and accessibility tests.
 - `DESIGN.md`, `PRODUCT.md`: development-only design and product context; not served.
 
-The site intentionally uses native HTML, CSS and Vite rather than a component framework. The narrative does not require a hydration runtime. Lucide provides a consistent icon set; diagrams are authored SVG geometry, not images of actual ECINet architecture.
+The site uses Vinext/React with small Base UI client components for the diagrams, motion control and copy action. The narrative is server-rendered and remains readable without JavaScript; disclosures retain native HTML behavior. Tailwind v4 provides theme tokens and shared layout utilities throughout the stylesheet alongside the custom responsive diagram CSS. Lucide React provides server-rendered icons; diagrams remain authored SVG geometry, not images of actual ECINet architecture. Vite+ owns builds, formatting, linting and type checks; @shadcn/lint is registered without imposing new design-system policies.
 
 ## Editorial guardrails
 

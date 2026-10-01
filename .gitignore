@@ -1,5 +1,8 @@
 node_modules/
 dist/
+.next/
+.vinext/
+next-env.d.ts
 test-results/
 playwright-report/
 .impeccable/review/
@@ -12,6 +15,10 @@ playwright-report/
 .env
 .env.*
 !.env.example
+
+# Local advocacy/filing drafts; not part of the public website source
+rti/
+scripts/generate-rti.mjs
 
 # Cloudflare build output and local runtime state
 .cloudflare/

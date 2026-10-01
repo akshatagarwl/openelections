@@ -10,7 +10,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "strict": true
+    "strict": true,
+    "jsx": "react-jsx",
+    "types": ["node", "react", "react-dom", "vinext/types"]
   },
-  "include": ["src", "vite.config.ts", "cloudflare.config.ts"]
+  "include": [
+    "app",
+    "src",
+    "tests",
+    "playwright.config.ts",
+    "vite.config.ts",
+    "cloudflare.config.ts",
+    ".cloudflare/types"
+  ]
 }
