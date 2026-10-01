@@ -12,15 +12,12 @@
   "type": "module",
   "scripts": {
     "dev": "vp dev --host 0.0.0.0",
-    "og:generate": "node scripts/generate-og.mjs",
     "build": "tsc --noEmit && vp build",
     "format": "vp fmt",
     "preview": "vp preview --host 0.0.0.0",
-    "test": "playwright test",
     "deploy": "npm run build && cf deploy --prebuilt",
     "lint": "vp lint",
-    "check": "vp check",
-    "test:production": "SITE_TEST_SERVER=preview playwright test"
+    "check": "vp check"
   },
   "dependencies": {
     "@base-ui/react": "1.8.0",
@@ -29,12 +26,11 @@
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-server-dom-webpack": "^19.3.0",
+    "takumi-js": "2.14.0",
     "vinext": "1.0.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.10.2",
     "@cloudflare/vite-plugin": "2.0.0-beta.sha-ad79608dd",
-    "@playwright/test": "^1.51.0",
     "@shadcn/lint": "0.2.0",
     "@tailwindcss/vite": "4.3.3",
     "@types/node": "^26.6.3",

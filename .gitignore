@@ -3,8 +3,6 @@ dist/
 .next/
 .vinext/
 next-env.d.ts
-test-results/
-playwright-report/
 .impeccable/review/
 .impeccable/questions/
 .impeccable/confirmation.json
