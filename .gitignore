@@ -3,12 +3,6 @@ dist/
 .next/
 .vinext/
 next-env.d.ts
-.impeccable/review/
-.impeccable/questions/
-.impeccable/confirmation.json
-.impeccable/directions.json
-.impeccable/contract.md
-.impeccable/config.local.json
 .DS_Store
 .env
 .env.*

@@ -7,7 +7,6 @@ export default defineConfig({
   fmt: {
     ignorePatterns: [
       ".cloudflare/**",
-      ".impeccable/**",
       ".next/**",
       ".vinext/**",
       "dist/**",
@@ -20,14 +19,7 @@ export default defineConfig({
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }, "@shadcn/lint"],
     rules: { "vite-plus/prefer-vite-plus-imports": "error" },
     options: { typeAware: true, typeCheck: true },
-    ignorePatterns: [
-      ".cloudflare/**",
-      ".impeccable/**",
-      ".next/**",
-      ".vinext/**",
-      "dist/**",
-      "rti/**",
-    ],
+    ignorePatterns: [".cloudflare/**", ".next/**", ".vinext/**", "dist/**", "rti/**"],
     settings: { shadcn: { theme: "src/style.css", ui: "src/components" } },
   },
   optimizeDeps: {
