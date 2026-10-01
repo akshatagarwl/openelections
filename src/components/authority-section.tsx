@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Toggle } from "@base-ui/react/toggle";
+import { ToggleGroup } from "@base-ui/react/toggle-group";
 import { useHydrated } from "./use-hydrated";
 import { Icon } from "./icon";
 
@@ -54,24 +55,18 @@ export function AuthoritySection() {
           That is a claim about the software. To test it independently, we need to see how the
           software implements it.
         </p>
-        <div className="view-toggle" role="group" aria-label="Diagram perspective">
-          <Toggle
-            disabled={!hydrated}
-            data-view="authority"
-            pressed={software === false}
-            onPressedChange={() => setSoftware(false)}
-          >
-            Statutory authority
-          </Toggle>
-          <Toggle
-            disabled={!hydrated}
-            data-view="software"
-            pressed={software === true}
-            onPressedChange={() => setSoftware(true)}
-          >
-            Software implementation
-          </Toggle>
-        </div>
+        <ToggleGroup
+          className="view-toggle"
+          aria-label="Diagram perspective"
+          disabled={!hydrated}
+          value={[software ? "software" : "authority"]}
+          onValueChange={(values) => {
+            if (values[0]) setSoftware(values[0] === "software");
+          }}
+        >
+          <Toggle value="authority">Statutory authority</Toggle>
+          <Toggle value="software">Software implementation</Toggle>
+        </ToggleGroup>
         <p className="interaction-hint">
           <Icon name="mouse-pointer-2" /> Switch views. Same officials. A different question.
         </p>

@@ -18,7 +18,7 @@ npm run build
 npm run preview
 ```
 
-Vite+ builds the Vinext React App Router application. The Cloudflare Vite plugin emits Cloudflare Build Output under `.cloudflare/output/`, consumed by `cf deploy --prebuilt`. A Worker now server-renders the narrative; there are still no accounts, application API keys, cookies, external font requests or analytics. HTTPS is recommended for clipboard access; a text-file download is provided if clipboard access fails.
+Vite+ builds the Vinext React App Router application. The Cloudflare Vite plugin emits Cloudflare Build Output under `.cloudflare/output/`, consumed by `cf deploy --prebuilt`. A Worker now server-renders the narrative; there are still no accounts, application API keys, cookies, external font requests or analytics. HTTPS is required for clipboard access. Copy success and failure are announced through Base UI Toast feedback in the existing inline location; failures do not trigger a download.
 
 ### Deploy with the Cloudflare CLI
 
@@ -65,12 +65,12 @@ npm run test:production
 
 `npm run check` runs Vite+ formatting, lint and type checks. `npm run format` applies formatting; `npm run lint` runs Oxlint with @shadcn/lint registered. No new @shadcn/lint rules are enabled; configure design-system policies in `vite.config.ts`. `npm test` uses the development server; `npm run test:production` runs the same suite against the built Worker via local preview, without deploying.
 
-Playwright covers desktop/mobile screenshot comparisons against the original design, WCAG A/AA axe checks, 320px overflow, diagram controls, pause/reduced motion, chapter navigation, clipboard/download fallback, native disclosure, no-JavaScript reading, unknown-route 404s and absence of external requests/tracking cookies. Hero baselines live in `tests/visual-baseline/`; review visual changes before updating them. Automated accessibility tests are not a substitute for assistive-technology testing. Screenshots are saved in `.impeccable/review/`.
+Playwright covers desktop/mobile screenshot comparisons against the original design, WCAG A/AA axe checks, 320px overflow, diagram controls, pause/reduced motion, chapter navigation, clipboard success/error feedback without downloads, Base UI disclosure controls, server-rendered narrative without JavaScript, unknown-route 404s and absence of external requests/tracking cookies. Hero baselines live in `tests/visual-baseline/`; review visual changes before updating them. Automated accessibility tests are not a substitute for assistive-technology testing. Screenshots are saved in `.impeccable/review/`.
 
 ## Structure
 
-- `app/page.tsx`, `app/layout.tsx`: server-rendered semantic story, adjacent citations and social metadata; readable without JavaScript.
-- `src/components/`: React/Base UI interactions, icons and reading progress.
+- `app/page.tsx`, `app/layout.tsx`: server-rendered semantic story, adjacent citations and social metadata; narrative readable without JavaScript (disclosure controls require it).
+- `src/components/`: React/Base UI interactions, disclosure controls, action links, icons and reading progress.
 - `src/content.ts`: diagram explanations and the shareable demand.
 - `src/style.css`: responsive exhibition design, self-hosted Manrope, reduced motion and print styles.
 - `cloudflare.config.ts`, `vite.config.ts`: Cloudflare Vinext Worker and Vite+ tooling configuration.
@@ -80,7 +80,7 @@ Playwright covers desktop/mobile screenshot comparisons against the original des
 - `tests/site.spec.ts`: browser and accessibility tests.
 - `DESIGN.md`, `PRODUCT.md`: development-only design and product context; not served.
 
-The site uses Vinext/React with small Base UI client components for the diagrams, motion control and copy action. The narrative is server-rendered and remains readable without JavaScript; disclosures retain native HTML behavior. Tailwind v4 provides theme tokens and shared layout utilities throughout the stylesheet alongside the custom responsive diagram CSS. Lucide React provides server-rendered icons; diagrams remain authored SVG geometry, not images of actual ECINet architecture. Vite+ owns builds, formatting, linting and type checks; @shadcn/lint is registered without imposing new design-system policies.
+The site uses Vinext/React with Base UI Toggle Groups for diagram selection, Accordion for publication requirements, Collapsible for methodology, Progress for reading position, Scroll Area for the mobile chapter strip, Button for copy and button-styled links, and Toast for inline copy feedback. Base UI's publicly exported (unstable) media-query hook handles reduced-motion preference changes. The narrative is server-rendered; interactive disclosure controls require JavaScript. There are no duplicate native disclosure implementations, no no-JavaScript disclosure-control fallback, and no clipboard-download fallback. Ordinary chapter/citation/source links remain semantic anchors. Tailwind v4 provides theme tokens and shared layout utilities throughout the stylesheet alongside the custom responsive diagram CSS. Lucide React provides server-rendered icons; diagrams remain authored SVG geometry, not images of actual ECINet architecture. Vite+ owns builds, formatting, linting and type checks; @shadcn/lint is registered without imposing new design-system policies.
 
 ## Editorial guardrails
 

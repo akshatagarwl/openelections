@@ -115,13 +115,13 @@ Six native buttons surround one central hub: three reported areas of concern (ap
 Two native toggle buttons share a frame. The active view is forest. Switching updates the diagram explanation and access-rule question, not the list of people.
 
 ### Navigation
-Five chapter links sit in a sticky rule-bound strip. A thin scroll-progress line shows reading progress; the current chapter also has a short underline and `aria-current`. Mobile navigation scrolls naturally with no drag-only gesture.
+Five chapter links sit in a sticky rule-bound strip. A thin Base UI Progress line shows reading progress and exposes its value to assistive technology; the current chapter also has a short underline and `aria-current`. Mobile navigation scrolls naturally with no drag-only gesture.
 
 ### Concern ledger
 Three rule-separated rows connect a current reported concern to a concrete audit question. The section is titled “Why openness matters”; these examples must not be presented as an exhaustive inventory of code to publish. Attribution remains beside each reported claim. The requested-code column uses a quiet tinted field, while ECI's response is presented separately. Mobile stacks each row in the same evidence-to-demand order.
 
 ### Disclosure list
-Native details/summary rows contain five continuing disclosures supporting the standing publication policy: source, architecture, review coverage, change history and reproducible releases. The visible introduction makes future modules and updates explicit. One row opens at a time. An icon rotates to indicate expansion; the content also works without JavaScript.
+Base UI Accordion rows contain five continuing disclosures supporting the standing publication policy: source, architecture, review coverage, change history and reproducible releases. The visible introduction makes future modules and updates explicit. One row opens at a time. An icon rotates to indicate expansion. The methodology uses Base UI Collapsible. Disclosure controls require JavaScript; no native duplicate or no-JavaScript control fallback is maintained.
 
 ### Precedent materials
 Estonia and Switzerland remain the two headline examples. Country panels have prominent repository links; the IVXV quotation is explicitly attributed. A two-column ruled list exposes Swiss Post's architecture, protocol specification, proofs, build guide, changelog, reproducible-build process, hashes and supporting documentation. On mobile it becomes one column; links stay visible, not hidden inside disclosures. Explain the difference between published code, protocol proofs and deployment evidence.

@@ -36,7 +36,21 @@ export default defineConfig({
     ],
     settings: { shadcn: { theme: "src/style.css", ui: "src/components" } },
   },
-  optimizeDeps: { exclude: ["lucide-react"] },
+  optimizeDeps: {
+    entries: ["app/**/*.tsx", "src/components/**/*.tsx"],
+    exclude: ["lucide-react"],
+    include: [
+      "@base-ui/react/accordion",
+      "@base-ui/react/button",
+      "@base-ui/react/collapsible",
+      "@base-ui/react/progress",
+      "@base-ui/react/scroll-area",
+      "@base-ui/react/toast",
+      "@base-ui/react/toggle",
+      "@base-ui/react/toggle-group",
+      "@base-ui/react/unstable-use-media-query",
+    ],
+  },
   plugins: lazyPlugins(() => [
     tailwindcss(),
     vinext(),

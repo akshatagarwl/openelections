@@ -3,6 +3,12 @@ import { AuthoritySection } from "../src/components/authority-section";
 import { ChapterNav } from "../src/components/chapter-nav";
 import { CopyDemand } from "../src/components/copy-demand";
 import { Icon } from "../src/components/icon";
+import {
+  PublicationChecklist,
+  PublicationRequirement,
+} from "../src/components/publication-checklist";
+import { Methodology } from "../src/components/methodology";
+import { ActionLink } from "../src/components/action-link";
 
 export default function Page() {
   return (
@@ -25,9 +31,9 @@ export default function Page() {
           <a href="#sources">
             The sources <Icon name="arrow-up-right" />
           </a>
-          <a className="header-cta" href="#checklist">
+          <ActionLink className="header-cta" href="#checklist">
             Read the demand <Icon name="arrow-down-right" />
-          </a>
+          </ActionLink>
         </nav>
       </header>
 
@@ -53,12 +59,12 @@ export default function Page() {
               </a>
               Publish the relevant code. Protect people’s data.
             </p>
-            <a className="primary-link" href="#checklist">
+            <ActionLink className="primary-link" href="#checklist">
               Read the demand{" "}
               <span>
                 <Icon name="arrow-down" />
               </span>
-            </a>
+            </ActionLink>
             <div className="hero-meta">
               <span>
                 <Icon name="clock-3" /> A 6-minute exploration
@@ -355,7 +361,7 @@ export default function Page() {
                   </a>
                 </cite>
               </blockquote>
-              <a
+              <ActionLink
                 className="repo-link"
                 href="https://github.com/valimised/ivxv"
                 target="_blank"
@@ -367,7 +373,7 @@ export default function Page() {
                 </span>
                 <Icon name="arrow-up-right" />
                 <span className="sr-only"> (opens in a new tab)</span>
-              </a>
+              </ActionLink>
               <a
                 className="text-link"
                 href="https://www.valimised.ee/en/internet-voting/frequently-asked-questions/questions-about-reliability-i-voting"
@@ -406,7 +412,7 @@ export default function Page() {
                 </a>
                 Code publication and expert review work together.
               </p>
-              <a
+              <ActionLink
                 className="repo-link"
                 href="https://gitlab.com/swisspost-evoting/e-voting/e-voting"
                 target="_blank"
@@ -418,7 +424,7 @@ export default function Page() {
                 </span>
                 <Icon name="arrow-up-right" />
                 <span className="sr-only"> (opens in a new tab)</span>
-              </a>
+              </ActionLink>
               <a
                 className="text-link"
                 href="https://www.bk.admin.ch/en/examination-of-systems"
@@ -880,97 +886,65 @@ export default function Page() {
             </p>
             <CopyDemand />
           </div>
-          <div className="checklist-items">
-            {/* Native disclosures can be toggled before hydration; retain the browser-owned open state. */}
-            <details suppressHydrationWarning name="checklist" open>
-              <summary>
-                <span className="checklist-number">01</span>
-                <span>Source code</span>
-                <Icon name="plus" />
-              </summary>
-              <div className="checklist-body">
-                <p>
-                  Maintain public repositories for every current or future component that implements
-                  election rules or mediates statutory powers, with required dependencies and
-                  synthetic tests. Publish new modules and changes before deployment, under an
-                  open-source licence permitting inspection, use, modification and redistribution.
-                  Publication must not depend on a complaint or controversy.
-                </p>
-                <span className="test-question">
-                  The test: What rules does the software actually enforce?
-                </span>
-              </div>
-            </details>
-            <details suppressHydrationWarning name="checklist">
-              <summary>
-                <span className="checklist-number">02</span>
-                <span>Architecture &amp; permissions</span>
-                <Icon name="plus" />
-              </summary>
-              <div className="checklist-body">
-                <p>
-                  Publish and keep current the data flows, trust boundaries, role-permission
-                  mappings, overrides and appeal workflows. For every new module or change, explain
-                  which statutory power or election rule it implements.
-                </p>
-                <span className="test-question">
-                  The test: Who can do what—and who can override it?
-                </span>
-              </div>
-            </details>
-            <details suppressHydrationWarning name="checklist">
-              <summary>
-                <span className="checklist-number">03</span>
-                <span>Audit reports &amp; remediation</span>
-                <Icon name="plus" />
-              </summary>
-              <div className="checklist-body">
-                <p>
-                  Publish scope, methods, versions examined, findings and fixes. Each release must
-                  state what has and has not been independently reviewed. Reassess changes affecting
-                  rules or permissions; keep a public issue and remediation history. Protect
-                  personal data and coordinate disclosure of exploitable vulnerabilities.
-                </p>
-                <span className="test-question">
-                  The test: What was examined, what was found, and what changed?
-                </span>
-              </div>
-            </details>
-            <details suppressHydrationWarning name="checklist">
-              <summary>
-                <span className="checklist-number">04</span>
-                <span>Version &amp; change history</span>
-                <Icon name="plus" />
-              </summary>
-              <div className="checklist-body">
-                <p>
-                  Provide tagged releases, meaningful change logs, approval records and dated
-                  deployment records for every update—including configuration and feature-flag
-                  changes that affect rules or permissions. Preserve earlier versions so past
-                  decisions remain auditable. Emergency fixes must also be recorded and reviewed.
-                </p>
-                <span className="test-question">The test: Which rules were running, and when?</span>
-              </div>
-            </details>
-            <details suppressHydrationWarning name="checklist">
-              <summary>
-                <span className="checklist-number">05</span>
-                <span>Reproducible builds</span>
-                <Icon name="plus" />
-              </summary>
-              <div className="checklist-body">
-                <p>
-                  Publish pinned build inputs, instructions and signed hashes for every release, so
-                  others can rebuild the same artifact. Deployment attestations are still needed to
-                  connect that artifact to the running service. Keep those records available after
-                  the next update.
-                </p>
-                <span className="test-question">
-                  The test: Does the reviewed source match the released software?
-                </span>
-              </div>
-            </details>
-          </div>
+          <PublicationChecklist>
+            <PublicationRequirement value="source" number="01" title="Source code">
+              <p>
+                Maintain public repositories for every current or future component that implements
+                election rules or mediates statutory powers, with required dependencies and
+                synthetic tests. Publish new modules and changes before deployment, under an
+                open-source licence permitting inspection, use, modification and redistribution.
+                Publication must not depend on a complaint or controversy.
+              </p>
+              <span className="test-question">
+                The test: What rules does the software actually enforce?
+              </span>
+            </PublicationRequirement>
+            <PublicationRequirement
+              value="architecture"
+              number="02"
+              title="Architecture & permissions"
+            >
+              <p>
+                Publish and keep current the data flows, trust boundaries, role-permission mappings,
+                overrides and appeal workflows. For every new module or change, explain which
+                statutory power or election rule it implements.
+              </p>
+              <span className="test-question">
+                The test: Who can do what—and who can override it?
+              </span>
+            </PublicationRequirement>
+            <PublicationRequirement value="audit" number="03" title="Audit reports & remediation">
+              <p>
+                Publish scope, methods, versions examined, findings and fixes. Each release must
+                state what has and has not been independently reviewed. Reassess changes affecting
+                rules or permissions; keep a public issue and remediation history. Protect personal
+                data and coordinate disclosure of exploitable vulnerabilities.
+              </p>
+              <span className="test-question">
+                The test: What was examined, what was found, and what changed?
+              </span>
+            </PublicationRequirement>
+            <PublicationRequirement value="history" number="04" title="Version & change history">
+              <p>
+                Provide tagged releases, meaningful change logs, approval records and dated
+                deployment records for every update—including configuration and feature-flag changes
+                that affect rules or permissions. Preserve earlier versions so past decisions remain
+                auditable. Emergency fixes must also be recorded and reviewed.
+              </p>
+              <span className="test-question">The test: Which rules were running, and when?</span>
+            </PublicationRequirement>
+            <PublicationRequirement value="builds" number="05" title="Reproducible builds">
+              <p>
+                Publish pinned build inputs, instructions and signed hashes for every release, so
+                others can rebuild the same artifact. Deployment attestations are still needed to
+                connect that artifact to the running service. Keep those records available after the
+                next update.
+              </p>
+              <span className="test-question">
+                The test: Does the reviewed source match the released software?
+              </span>
+            </PublicationRequirement>
+          </PublicationChecklist>
         </section>
 
         <section className="closing" aria-labelledby="closing-title">
@@ -1277,36 +1251,31 @@ export default function Page() {
               </div>
             </li>
           </ol>
-          <details suppressHydrationWarning className="methodology">
-            <summary>
-              The evidence behind this demand <Icon name="plus" />
-            </summary>
-            <div>
-              <p>
-                ECI statements are attributed, not treated as independent proof of implementation.
-                The diagrams explain concepts; they are not reverse-engineered ECINet designs. The
-                demand and disclosure boundaries are our advocacy position, not a claim about an
-                existing legal duty to publish source code. “Public verification” here means
-                independent inspection and testing—not proof that a system is flawless.
-              </p>
-              <p>
-                Our availability statement is a bounded research finding, not an exhaustive
-                inventory of every ECI publication. The newspaper’s investigation and explainer are
-                attributed reporting; its editorial is opinion. They do not substitute for the
-                underlying internal documents or an independent examination of the software. PIB
-                blocked direct automated retrieval during preparation; those releases were checked
-                through search-indexed primary-source passages. The Estonian and Swiss pages and
-                linked repository documentation were retrieved directly. We have not independently
-                rebuilt these systems, verified the cryptographic proofs or audited their deployed
-                binaries. Recheck the linked originals before relying on time-sensitive details.
-              </p>
-              <p>
-                This website is independent and is not affiliated with the Election Commission of
-                India. The website code is MIT-licensed; third-party source materials retain their
-                own rights.
-              </p>
-            </div>
-          </details>
+          <Methodology>
+            <p>
+              ECI statements are attributed, not treated as independent proof of implementation. The
+              diagrams explain concepts; they are not reverse-engineered ECINet designs. The demand
+              and disclosure boundaries are our advocacy position, not a claim about an existing
+              legal duty to publish source code. “Public verification” here means independent
+              inspection and testing—not proof that a system is flawless.
+            </p>
+            <p>
+              Our availability statement is a bounded research finding, not an exhaustive inventory
+              of every ECI publication. The newspaper’s investigation and explainer are attributed
+              reporting; its editorial is opinion. They do not substitute for the underlying
+              internal documents or an independent examination of the software. PIB blocked direct
+              automated retrieval during preparation; those releases were checked through
+              search-indexed primary-source passages. The Estonian and Swiss pages and linked
+              repository documentation were retrieved directly. We have not independently rebuilt
+              these systems, verified the cryptographic proofs or audited their deployed binaries.
+              Recheck the linked originals before relying on time-sensitive details.
+            </p>
+            <p>
+              This website is independent and is not affiliated with the Election Commission of
+              India. The website code is MIT-licensed; third-party source materials retain their own
+              rights.
+            </p>
+          </Methodology>
         </section>
       </main>
       <footer className="site-footer">
@@ -1325,9 +1294,9 @@ export default function Page() {
         <a href="/LICENSE.txt">
           MIT licence <Icon name="arrow-up-right" />
         </a>
-        <a href="#" className="back-to-top" aria-label="Back to top">
+        <ActionLink href="#" className="back-to-top" aria-label="Back to top">
           <Icon name="arrow-up" />
-        </a>
+        </ActionLink>
       </footer>
     </>
   );

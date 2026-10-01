@@ -6,7 +6,7 @@
 web
 
 ## Stack
-React/Vinext on Vite+, Base UI controls, Tailwind v4 theme and layout utilities, TypeScript, and @shadcn/lint. Preserve the accessible server-rendered narrative, native disclosures, custom interactive diagrams and exhibition design.
+React/Vinext on Vite+, Base UI controls, Tailwind v4 theme and layout utilities, TypeScript, and @shadcn/lint. Preserve the accessible server-rendered narrative, Base UI disclosures, custom interactive diagrams and exhibition design.
 
 ## Users
 Citizens, journalists and technical readers who can scrutinise and share a nonpartisan demand for an enduring open-source publication policy for election software.
@@ -30,4 +30,4 @@ ECI releases published by PIB, Estonian election authority documentation and Swi
 - Keep citations adjacent and accessible.
 
 ## Accessibility & Inclusion
-Keyboard usable, semantic structure, reduced-motion support and responsive mobile reading. WCAG AA target.
+Keyboard usable, semantic structure, reduced-motion support and responsive mobile reading. WCAG AA target. Narrative and references are server-rendered; Base UI disclosure controls require JavaScript, with no alternate native UI. Clipboard failures show explicit feedback rather than downloading a fallback file.

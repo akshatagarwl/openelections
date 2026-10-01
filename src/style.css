@@ -52,15 +52,13 @@ body {
   margin: 0;
 }
 button,
-a,
-summary {
+a {
   -webkit-tap-highlight-color: transparent;
 }
 button {
   font: inherit;
 }
-button,
-summary {
+button {
   cursor: pointer;
 }
 a {
@@ -68,8 +66,7 @@ a {
   text-underline-offset: 4px;
 }
 button:focus-visible,
-a:focus-visible,
-summary:focus-visible {
+a:focus-visible {
   outline: 3px solid #618643;
   outline-offset: 5px;
 }
@@ -469,19 +466,19 @@ a:hover {
   height: 15px;
   color: #c4dca3;
 }
-.workflow-node.is-selected {
+.workflow-node[data-pressed] {
   color: var(--dark);
   background: var(--lime);
   border-color: var(--lime);
 }
-.workflow-node.is-selected svg {
+.workflow-node[data-pressed] svg {
   color: var(--dark);
 }
 .workflow-node:hover {
   border-color: var(--lime);
   background: #3c5438;
 }
-.workflow-node.is-selected:hover {
+.workflow-node[data-pressed]:hover {
   background: #d2e8a8;
 }
 .node-rolls {
@@ -565,11 +562,13 @@ a:hover {
   border-bottom: 1px solid var(--line);
   background: var(--paper);
   padding: 0 5%;
-  @apply grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
   isolation: isolate;
 }
-.chapter-nav > a {
+.chapter-links {
+  @apply grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.chapter-links > a {
   @apply flex;
   @apply items-center;
   gap: 10px;
@@ -582,23 +581,23 @@ a:hover {
   min-width: 0;
   white-space: nowrap;
 }
-.chapter-nav > a:first-of-type {
+.chapter-links > a:first-of-type {
   padding-left: 0;
 }
-.chapter-nav > a:last-of-type {
+.chapter-links > a:last-of-type {
   border-right: 0;
   padding-right: 0;
 }
-.chapter-nav > a > span {
+.chapter-links > a > span {
   font-size: 9px;
   color: #5d6b51;
   font-variant-numeric: tabular-nums;
 }
-.chapter-nav > a:hover,
-.chapter-nav > a.is-active {
+.chapter-links > a:hover,
+.chapter-links > a.is-active {
   color: var(--green);
 }
-.chapter-nav > a.is-active:after {
+.chapter-links > a.is-active:after {
   @apply absolute;
   content: "";
   bottom: 0;
@@ -607,7 +606,7 @@ a:hover {
   height: 2px;
   background: var(--green);
 }
-.chapter-nav > a:first-of-type.is-active:after {
+.chapter-links > a:first-of-type.is-active:after {
   left: 0;
 }
 .chapter-nav svg {
@@ -619,13 +618,15 @@ a:hover {
   @apply absolute;
   top: -1px;
   height: 2px;
-  background: var(--green);
   left: 0;
   @apply w-full;
-  transform: scaleX(0);
-  transform-origin: left;
   z-index: 1;
-  will-change: transform;
+}
+.reading-progress-track {
+  @apply h-full;
+}
+.reading-progress-indicator {
+  background: var(--green);
 }
 .chapter {
   padding: 99px 8%;
@@ -1609,10 +1610,13 @@ h2 {
   border-top: 1px solid var(--line);
   align-self: start;
 }
-.checklist-items details {
+.checklist-item {
   border-bottom: 1px solid var(--line);
 }
-.checklist-items summary {
+.checklist-trigger {
+  @apply w-full text-left;
+  border: 0;
+  background: transparent;
   @apply flex;
   @apply items-center;
   gap: 21px;
@@ -1622,9 +1626,8 @@ h2 {
   font-weight: 600;
   letter-spacing: -0.015em;
 }
-.checklist-items summary::-webkit-details-marker,
-.methodology summary::-webkit-details-marker {
-  display: none;
+.checklist-heading {
+  font: inherit;
 }
 .checklist-number {
   font-size: 10px;
@@ -1633,20 +1636,24 @@ h2 {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
-.checklist-items summary svg {
+.checklist-trigger svg {
   margin-left: auto;
   width: 16px;
   height: 16px;
   transition: transform 0.25s;
 }
-.checklist-items details[open] summary svg {
+.checklist-trigger[data-panel-open] svg {
   transform: rotate(45deg);
 }
-.checklist-items summary:hover {
+.checklist-trigger:hover {
   color: var(--green);
 }
 .checklist-body {
   padding: 0 15px 25px 37px;
+}
+.checklist-body[hidden],
+.methodology-body[hidden] {
+  padding: 0;
 }
 .checklist-body p {
   font-size: 12px;
@@ -1697,7 +1704,8 @@ h2 {
   padding: 70px 8% 65px;
   @apply grid;
   grid-template-columns: 0.8fr 1.4fr;
-  gap: 7%;
+  column-gap: 7%;
+  row-gap: 55px;
 }
 .sources-heading h2 {
   font-size: 30px;
@@ -1769,7 +1777,10 @@ h2 {
   border-bottom: 1px solid var(--line);
   margin-top: -10px;
 }
-.methodology summary {
+.methodology-trigger {
+  @apply w-full text-left;
+  border: 0;
+  background: transparent;
   @apply flex;
   @apply items-center;
   @apply justify-between;
@@ -1778,14 +1789,14 @@ h2 {
   font-size: 11px;
   font-weight: 650;
 }
-.methodology summary svg {
+.methodology-trigger svg {
   width: 14px;
   height: 14px;
 }
-.methodology[open] summary svg {
+.methodology-trigger[data-panel-open] svg {
   transform: rotate(45deg);
 }
-.methodology > div {
+.methodology-body {
   padding-bottom: 20px;
 }
 .methodology p {
@@ -1938,12 +1949,12 @@ h2 {
     padding: 13px 15px;
     font-size: 6px;
   }
-  .chapter-nav > a {
+  .chapter-links > a {
     padding: 19px 8px;
     font-size: 9px;
     gap: 6px;
   }
-  .chapter-nav > a.is-active:after {
+  .chapter-links > a.is-active:after {
     left: 12px;
     right: 12px;
   }
@@ -2122,25 +2133,22 @@ h2 {
   }
   .chapter-nav {
     padding: 0 6%;
-    @apply flex;
-    overflow-x: auto;
-    scrollbar-width: none;
     top: 0;
   }
-  .chapter-nav::-webkit-scrollbar {
-    display: none;
+  .chapter-links {
+    @apply flex w-max;
   }
-  .chapter-nav > a {
+  .chapter-links > a {
     padding: 18px 17px;
     font-size: 10px;
     min-height: 54px;
     gap: 8px;
     @apply shrink-0;
   }
-  .chapter-nav > a:last-of-type {
+  .chapter-links > a:last-of-type {
     padding-right: 16px;
   }
-  .chapter-nav > a:first-of-type {
+  .chapter-links > a:first-of-type {
     padding-left: 0;
   }
   .chapter-nav svg {
@@ -2466,7 +2474,7 @@ h2 {
   .copy-status {
     margin-top: 7px;
   }
-  .checklist-items summary {
+  .checklist-trigger {
     font-size: 14px;
     padding: 22px 0;
     gap: 17px;
@@ -2596,7 +2604,7 @@ h2 {
   .figure-heading span:last-child {
     font-size: 5.5px;
   }
-  .checklist-items summary {
+  .checklist-trigger {
     font-size: 12px;
   }
   .closing h2 {
@@ -2650,8 +2658,10 @@ h2 {
   .comparison {
     break-inside: avoid;
   }
-  .checklist-items details > div {
+  .checklist-body,
+  .methodology-body {
     @apply block;
+    content-visibility: visible;
   }
   .sources-section {
     @apply block;

@@ -1,16 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Toggle } from "@base-ui/react/toggle";
+import { ToggleGroup } from "@base-ui/react/toggle-group";
 import { Icon } from "./icon";
 import { workflows, type Workflow } from "../content";
 import { useHydrated } from "./use-hydrated";
-import { useReducedMotion } from "./use-reduced-motion";
+import { useMediaQuery } from "@base-ui/react/unstable-use-media-query";
 
 export function CodeExplorer() {
   const hydrated = useHydrated();
   const [selected, setSelected] = useState<Workflow>("validation");
   const [userPaused, setUserPaused] = useState(false);
-  const reducedMotion = useReducedMotion();
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)", {});
   const paused = userPaused || reducedMotion;
   const item = workflows[selected];
   useEffect(() => {
@@ -41,7 +42,15 @@ export function CodeExplorer() {
           <Icon name={paused ? "play" : "pause"} />
         </Toggle>
       </div>
-      <div className="network">
+      <ToggleGroup
+        className="network"
+        aria-label="Code to examine"
+        disabled={!hydrated}
+        value={[selected]}
+        onValueChange={(values) => {
+          if (values[0]) setSelected(values[0]);
+        }}
+      >
         <svg className="network-lines" viewBox="0 0 560 390" fill="none" aria-hidden="true">
           <circle className="orbit" cx="280" cy="195" r="104"></circle>
           <circle className="orbit orbit-outer" cx="280" cy="195" r="162"></circle>
@@ -62,71 +71,31 @@ export function CodeExplorer() {
           <strong>ECINet</strong>
           <span>ELECTORAL ROLLS</span>
         </div>
-        <Toggle
-          disabled={!hydrated}
-          className={"workflow-node node-rolls" + (selected === "validation" ? " is-selected" : "")}
-          pressed={selected === "validation"}
-          onPressedChange={() => setSelected("validation")}
-          data-workflow="validation"
-        >
+        <Toggle className="workflow-node node-rolls" value="validation">
           <Icon name="list-checks" />
           <span>Form 6 checks</span>
         </Toggle>
-        <Toggle
-          disabled={!hydrated}
-          className={
-            "workflow-node node-voters" + (selected === "permissions" ? " is-selected" : "")
-          }
-          pressed={selected === "permissions"}
-          onPressedChange={() => setSelected("permissions")}
-          data-workflow="permissions"
-        >
+        <Toggle className="workflow-node node-voters" value="permissions">
           <Icon name="users-round" />
           <span>Officer permissions</span>
         </Toggle>
-        <Toggle
-          disabled={!hydrated}
-          className={
-            "workflow-node node-candidates" + (selected === "restoration" ? " is-selected" : "")
-          }
-          pressed={selected === "restoration"}
-          onPressedChange={() => setSelected("restoration")}
-          data-workflow="restoration"
-        >
+        <Toggle className="workflow-node node-candidates" value="restoration">
           <Icon name="contact-round" />
           <span>Voter restoration</span>
         </Toggle>
-        <Toggle
-          disabled={!hydrated}
-          className={"workflow-node node-officials" + (selected === "audit" ? " is-selected" : "")}
-          pressed={selected === "audit"}
-          onPressedChange={() => setSelected("audit")}
-          data-workflow="audit"
-        >
+        <Toggle className="workflow-node node-officials" value="audit">
           <Icon name="network" />
           <span>Audit trails</span>
         </Toggle>
-        <Toggle
-          disabled={!hydrated}
-          className={"workflow-node node-turnout" + (selected === "history" ? " is-selected" : "")}
-          pressed={selected === "history"}
-          onPressedChange={() => setSelected("history")}
-          data-workflow="history"
-        >
+        <Toggle className="workflow-node node-turnout" value="history">
           <Icon name="chart-no-axes-column-increasing" />
           <span>Change history</span>
         </Toggle>
-        <Toggle
-          disabled={!hydrated}
-          className={"workflow-node node-results" + (selected === "builds" ? " is-selected" : "")}
-          pressed={selected === "builds"}
-          onPressedChange={() => setSelected("builds")}
-          data-workflow="builds"
-        >
+        <Toggle className="workflow-node node-results" value="builds">
           <Icon name="file-chart-column-increasing" />
           <span>Build inputs</span>
         </Toggle>
-      </div>
+      </ToggleGroup>
       <div className="network-detail" aria-live="polite" aria-atomic="true">
         <span className="detail-index" id="workflow-index">
           {item.index} / 06

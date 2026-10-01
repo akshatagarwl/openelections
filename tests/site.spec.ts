@@ -78,18 +78,21 @@ test("workflow and authority diagrams are functional", async ({ page }) => {
   await expect(page.locator("html")).not.toHaveClass(/motion-paused/);
 });
 
-test("checklist, clipboard and download fallback work", async ({ page, context }) => {
+test("checklist and clipboard sharing work without alternate download paths", async ({
+  page,
+  context,
+}) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("/");
-  await page.locator("summary").filter({ hasText: "Reproducible builds" }).click();
+  await page.getByRole("button", { name: "05 Reproducible builds" }).click();
   await expect(
     page.getByText("Deployment attestations are still needed", {
       exact: false,
     }),
   ).toBeVisible();
-  await expect(page.locator(".checklist-items details[open]")).toHaveCount(1);
+  await expect(page.locator('.checklist-items button[aria-expanded="true"]')).toHaveCount(1);
   await page.getByRole("button", { name: "Copy the demand" }).click();
-  await expect(page.getByRole("status")).toContainText("Demand copied");
+  await expect(page.getByRole("region", { name: "Copy feedback" })).toContainText("Demand copied");
   const copied = await page.evaluate(() => navigator.clipboard.readText());
   expect(copied).toContain("our demand to the ECI");
   expect(copied).toContain("current components, future modules and every update");
@@ -102,10 +105,10 @@ test("checklist, clipboard and download fallback work", async ({ page, context }
       value: () => Promise.reject(new Error("Permission denied")),
     });
   });
-  const downloadPromise = page.waitForEvent("download");
   await page.getByRole("button", { name: "Copy the demand" }).click();
-  expect((await downloadPromise).suggestedFilename()).toBe("openelections-open-code-demand.txt");
-  await expect(page.getByRole("status")).toContainText("downloaded instead");
+  await expect(page.getByRole("region", { name: "Copy feedback" })).toContainText(
+    "Could not copy the demand",
+  );
 });
 
 test("keyboard, reduced motion and local citations", async ({ page }) => {
@@ -184,7 +187,7 @@ test("the demand is explicit, scoped, and reachable from the main action", async
   await expect(page.locator(".section-heading").first()).toContainText("examples—not the boundary");
   await expect(page.locator(".checklist-intro")).toContainText("standing publication policy");
   await expect(page.locator(".checklist-caption")).toContainText("before deployment");
-  await expect(page.locator(".checklist-items details").first()).toContainText(
+  await expect(page.getByRole("region", { name: "01 Source code" })).toContainText(
     "Publication must not depend on a complaint or controversy",
   );
   await expect(page.getByRole("link", { name: "01 Why openness matters" })).toBeVisible();
@@ -264,14 +267,20 @@ test("the story makes no external requests or tracking cookies", async ({ page, 
   expect(await context.cookies()).toEqual([]);
 });
 
-test("the narrative and references remain available without JavaScript", async ({ browser }) => {
+test("the narrative remains server-rendered while disclosure controls require JavaScript", async ({
+  browser,
+}) => {
   const page = await browser.newPage({ javaScriptEnabled: false });
   await page.goto("http://127.0.0.1:4173/");
   await expect(page.locator("h1")).toBeVisible();
   await expect(page.locator("#sources-title")).toHaveText("The evidence desk.");
   await expect(page.locator(".source-list li")).toHaveCount(14);
   await expect(page.locator("#essay-title")).toHaveText("The argument for public verification");
-  await page.locator("summary").filter({ hasText: "Version & change history" }).click();
-  await expect(page.getByText("Provide tagged releases", { exact: false })).toBeVisible();
+  await expect(page.getByRole("region", { name: "01 Source code" })).toContainText(
+    "Publication must not depend on a complaint or controversy",
+  );
+  await expect(page.getByRole("button", { name: "04 Version & change history" })).toBeDisabled();
+  await expect(page.getByText("Provide tagged releases", { exact: false })).toBeHidden();
+  await expect(page.locator("details, summary, noscript")).toHaveCount(0);
   await page.close();
 });
